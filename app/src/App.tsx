@@ -8,6 +8,7 @@ import { Explore } from "./sections/Explore";
 import { Learn } from "./sections/Learn";
 import { Simulate } from "./sections/Simulate";
 import { Prediction } from "./sections/Prediction";
+import prereg from "./prereg-commit.json";
 
 const SECTION_IDS: SectionId[] = ["learn", "explore", "simulate", "prediction"];
 
@@ -120,8 +121,9 @@ function Page() {
         <div className="wrap">
           Fares: DOT Consumer Airfare Report (Table 6). Market shares: BTS
           T-100. Ownership: SEC filings &amp; AST (2018) Table 1 — every number
-          cited in the methods panel. Pre-registration commit hash lands here
-          in Phase 7.
+          cited in the fine print above. Predictions frozen in commit{" "}
+          <code>{prereg.commit.slice(0, 12)}</code> ({prereg.frozen}),{" "}
+          <code>{prereg.path}</code>.
         </div>
       </footer>
     </>
