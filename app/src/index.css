@@ -1138,6 +1138,51 @@ button {
   }
 }
 
+/* ---------- fine print ---------- */
+
+.fine-item {
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-ui);
+}
+
+.fine-item summary {
+  cursor: pointer;
+  font-size: 15.5px;
+  font-weight: 600;
+  padding: 14px 4px;
+  list-style-position: outside;
+}
+
+.fine-item summary:hover {
+  color: var(--ink-muted);
+}
+
+.fine-body {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  max-width: 76ch;
+  padding: 0 4px 16px;
+}
+
+.fine-body strong {
+  color: var(--ink);
+}
+
+.fine-body ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.fine-body li {
+  margin-bottom: 9px;
+}
+
+.fine-body code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+}
+
 /* ---------- footer ---------- */
 
 .footer {

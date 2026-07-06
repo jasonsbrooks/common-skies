@@ -7,6 +7,7 @@ import { StoryRail } from "./components/StoryRail";
 import { Explore } from "./sections/Explore";
 import { Learn } from "./sections/Learn";
 import { Simulate } from "./sections/Simulate";
+import { Methods } from "./sections/Methods";
 import { Prediction } from "./sections/Prediction";
 import prereg from "./prereg-commit.json";
 
@@ -117,6 +118,7 @@ function Page() {
         <Simulate />
         <Prediction />
       </div>
+      <Methods />
       <footer className="footer">
         <div className="wrap">
           Fares: DOT Consumer Airfare Report (Table 6). Market shares: BTS
