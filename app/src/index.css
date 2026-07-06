@@ -310,6 +310,105 @@ button {
   box-shadow: 0 6px 24px rgba(30, 25, 15, 0.25);
 }
 
+/* ---------- control bar (the two dials) ---------- */
+
+.controlbar {
+  position: sticky;
+  top: 41px;
+  z-index: 30;
+  background: var(--paper-raised);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  box-shadow: 0 4px 18px rgba(30, 25, 15, 0.05);
+}
+
+.controlbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 36px;
+  align-items: flex-start;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.dial {
+  font-family: var(--font-ui);
+}
+
+.dial-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.seg-btn {
+  border: none;
+  background: var(--paper-raised);
+  font-size: 13px;
+  padding: 7px 13px;
+  color: var(--ink-muted);
+}
+
+.seg-btn + .seg-btn {
+  border-left: 1px solid var(--hairline);
+}
+
+.seg-btn.on {
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.seg-btn.ast.on {
+  background: var(--ast);
+}
+
+.seg-btn.dgs.on {
+  background: var(--dgs);
+}
+
+.custom-coef {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.custom-coef input {
+  width: 170px;
+  accent-color: var(--ink);
+}
+
+.coef-anchor {
+  color: var(--ink-faint);
+}
+
+.translation {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15.5px;
+  color: var(--ink-muted);
+  margin: 4px 0 0;
+  max-width: 44ch;
+  flex: 1 1 300px;
+}
+
+.translation strong {
+  color: var(--ink);
+  font-style: normal;
+}
+
 /* ---------- explore ---------- */
 
 .route-picker {

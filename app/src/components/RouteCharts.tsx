@@ -2,6 +2,7 @@ import { scaleLinear } from "d3-scale";
 import { line } from "d3-shape";
 import { useMemo, useState, type ReactNode } from "react";
 import type { BundleEvent, Route } from "../lib/bundle";
+import { useAnimatedSeries } from "../lib/useAnimatedSeries";
 import { useAppState } from "../state";
 
 const W = 640;
@@ -159,7 +160,11 @@ export function RouteCharts({ route }: { route: Route }) {
   const [eventTip, setEventTip] = useState<{ evs: BundleEvent[]; xFrac: number } | null>(null);
 
   const chartEvents = bundle.events.filter((e) => !e.beyond_series);
-  const mhhi = assumption === "proportional" ? s.mhhiDeltaAst : s.mhhiDeltaPassive;
+  const mhhiTarget = assumption === "proportional" ? s.mhhiDeltaAst : s.mhhiDeltaPassive;
+  // Animated: toggle flips deflate/inflate the line; route changes glide.
+  const mhhi = useAnimatedSeries(mhhiTarget);
+  const hhiAnim = useAnimatedSeries(s.hhi);
+  const fareAnim = useAnimatedSeries(s.fare);
 
   const fareY = useMemo(() => {
     const vals = s.fare.filter((v): v is number => v !== null);
@@ -201,7 +206,7 @@ export function RouteCharts({ route }: { route: Route }) {
               </text>
             </g>
           ))}
-        <path d={seriesPath(s.fare, x, fareY)} fill="none" stroke="var(--fare)" strokeWidth="2" />
+        <path d={seriesPath(fareAnim, x, fareY)} fill="none" stroke="var(--fare)" strokeWidth="2" />
         <EventLayer events={chartEvents} quarters={s.quarters} x={x} h={FARE_H} onHover={setEventTip} />
         <Crosshair idx={i} x={x} h={FARE_H} />
         <XAxis quarters={s.quarters} x={x} h={FARE_H} />
@@ -241,13 +246,12 @@ export function RouteCharts({ route }: { route: Route }) {
         <text x={W - M.right} y={concY(2500) - 5} className="tick" textAnchor="end">
           regulators flag mergers above 2,500
         </text>
-        <path d={seriesPath(s.hhi, x, concY)} fill="none" stroke="var(--hhi)" strokeWidth="1.8" />
+        <path d={seriesPath(hhiAnim, x, concY)} fill="none" stroke="var(--hhi)" strokeWidth="1.8" />
         <path
           d={seriesPath(mhhi, x, concY)}
           fill="none"
           stroke="var(--mhhi)"
           strokeWidth="2.2"
-          style={{ transition: "d 400ms ease" }}
         />
         <EventLayer events={chartEvents} quarters={s.quarters} x={x} h={CONC_H} onHover={setEventTip} />
         <Crosshair idx={i} x={x} h={CONC_H} />
@@ -260,7 +264,7 @@ export function RouteCharts({ route }: { route: Route }) {
           <div>Fare {s.fare[i] !== null ? `$${s.fare[i]!.toFixed(0)}` : "—"}</div>
           <div>HHI {s.hhi[i]?.toLocaleString() ?? "—"}</div>
           <div>
-            MHHI Δ {mhhi[i]?.toLocaleString() ?? "—"}
+            MHHI Δ {mhhiTarget[i]?.toLocaleString() ?? "—"}
             <span className="tip-dim"> ({assumption === "proportional" ? "AST view" : "passive-index view"})</span>
           </div>
           {shares && (

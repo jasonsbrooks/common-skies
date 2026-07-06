@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { loadBundle, type Bundle } from "./lib/bundle";
 import { AppStateProvider, useAppState, type SectionId } from "./state";
+import { ControlBar } from "./components/ControlBar";
 import { Hero } from "./components/Hero";
 import { StoryRail } from "./components/StoryRail";
 import { Explore } from "./sections/Explore";
@@ -89,9 +90,13 @@ function Page() {
       <ResumeBanner />
       <Hero />
       <Learn />
-      <Explore />
-      <Simulate />
-      <Prediction />
+      {/* Wrapper scopes the sticky control bar to the data sections. */}
+      <div className="dial-scope">
+        <ControlBar />
+        <Explore />
+        <Simulate />
+        <Prediction />
+      </div>
       <footer className="footer">
         <div className="wrap">
           Fares: DOT Consumer Airfare Report (Table 6). Market shares: BTS
