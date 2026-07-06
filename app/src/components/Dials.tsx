@@ -117,14 +117,16 @@ export function DialsIntro() {
           <div className="dial-num">Dial 1 · the measurement</div>
           <h3>Whose stock-holdings count as influence?</h3>
           <p>
-            The purple line below measures <em>hidden</em> concentration — it
-            only exists if owning a rival's stock makes an airline compete
-            less hard. But whose holdings count?{" "}
+            The purple line below is <strong>MHHI delta</strong> — the
+            "extra points for shared owners" score you just met in ① —
+            computed for real routes. But building it forces a choice:
+            whose holdings count as influence over an airline?{" "}
             <strong style={{ color: "var(--ast)" }}>AST counted every big
-            shareholder</strong>, influence in proportion to stake.{" "}
-            <strong style={{ color: "var(--dgs)" }}>The critics object</strong>:
-            Vanguard, BlackRock &amp; State Street are <em>passive</em> — they
-            hold, they don't steer — so their stakes shouldn't count at all.
+            shareholder</strong> — the bigger your stake, the more say you
+            have. <strong style={{ color: "var(--dgs)" }}>The critics
+            object</strong>: Vanguard, BlackRock &amp; State Street just
+            hold the stock for millions of savers — they don't tell airlines
+            how to compete — so their stakes shouldn't count at all.
           </p>
           <AssumptionToggle />
           <p className="dial-effect">
@@ -134,15 +136,18 @@ export function DialsIntro() {
         </div>
         <div className="dial-card">
           <div className="dial-num">Dial 2 · the damage</div>
-          <h3>How hard does hidden concentration hit fares?</h3>
+          <h3>If the score rises, how much do fares rise?</h3>
           <p>
-            Both camps measured what one point of hidden concentration does to
-            ticket prices — and published different answers.{" "}
-            <strong style={{ color: "var(--ast)" }}>AST: fares rise
-            noticeably</strong> (3–7% on the average route).{" "}
-            <strong style={{ color: "var(--dgs)" }}>The critics: no
-            measurable effect</strong> — statistically zero. Or drag your own
-            multiplier between them.
+            Extra points on a scoreboard don't cost you money by themselves —
+            the question is how strongly those points translate into ticket
+            prices. Both camps measured exactly that, on the same government
+            data, and published different answers.{" "}
+            <strong style={{ color: "var(--ast)" }}>AST: noticeably</strong>{" "}
+            — enough to make fares 3–7% higher on the average route.{" "}
+            <strong style={{ color: "var(--dgs)" }}>The critics: not at
+            all</strong> — once measured their way, the effect is
+            indistinguishable from zero. Or drag your own multiplier
+            anywhere between.
           </p>
           <RegimeToggle />
           <p className="dial-effect">

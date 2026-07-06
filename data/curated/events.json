@@ -5,7 +5,7 @@
       "quarter": "2016Q4",
       "date": "2016-11-14",
       "label": "Berkshire buys into all four majors",
-      "detail": "Berkshire Hathaway's 13F (filed Nov 14, 2016) reveals new stakes in American, Delta, United, and Southwest — a famously un-diversified investor joins the common-ownership pool at scale.",
+      "detail": "Warren Buffett's Berkshire Hathaway reveals big new stakes in American, Delta, United, AND Southwest \u2014 all four at once. A famous stock-picker joins the everyone-owns-everyone club, and the purple line feels it.",
       "source": "Berkshire Hathaway 13F, 2016Q3/Q4"
     },
     {
@@ -13,7 +13,7 @@
       "quarter": "2020Q2",
       "date": "2020-03-15",
       "label": "COVID-19 collapses air travel",
-      "detail": "US passenger volumes fall ~95% at the trough. Fares and route networks convulse; every series on this chart shows the scar.",
+      "detail": "US air travel falls ~95% at the worst point. Fares and route maps convulse; every line on this chart carries the scar.",
       "source": "TSA checkpoint data, 2020"
     },
     {
@@ -21,7 +21,7 @@
       "quarter": "2020Q2",
       "date": "2020-05-02",
       "label": "Berkshire exits all airline stakes",
-      "detail": "Buffett announces Berkshire sold its entire ~10% stakes in all four majors during April 2020 ('The world has changed for the airlines'). A large undiversified-ish cross-holder leaves the pool — watch MHHI delta step down.",
+      "detail": "Buffett sells all four airline stakes in a single month: 'The world has changed for the airlines.' One of the biggest shared owners leaves the web \u2014 watch the purple line step down.",
       "source": "Berkshire Hathaway annual meeting, May 2, 2020; CNBC 2020-05-02"
     },
     {
@@ -29,15 +29,15 @@
       "quarter": "2021Q2",
       "date": "2021-04-01",
       "label": "Frontier IPOs (Indigo keeps control)",
-      "detail": "Frontier goes public but remains a controlled company under Indigo Partners — index funds hold only a sliver. Not every airline is index-owned alike.",
+      "detail": "Frontier starts selling shares to the public, but the private investment firm Indigo Partners keeps control \u2014 index funds only ever get a sliver. Not every airline is wired into the web equally.",
       "source": "ULCC S-1/DEF 14A 2022 (controlled company)"
     },
     {
       "id": "jetblue-spirit-blocked",
       "quarter": "2024Q1",
       "date": "2024-01-16",
-      "label": "JetBlue–Spirit merger blocked",
-      "detail": "A federal judge blocks the $3.8B acquisition on antitrust grounds, removing Spirit's exit ramp and setting up its bankruptcy.",
+      "label": "JetBlue\u2013Spirit merger blocked",
+      "detail": "A federal judge blocks JetBlue's $3.8B purchase of Spirit, ruling it would raise fares. That's ordinary, visible concentration \u2014 the kind regulators' score can see \u2014 and it leaves Spirit with no rescue plan.",
       "source": "US v. JetBlue, D. Mass., Jan 16 2024"
     },
     {
@@ -45,7 +45,7 @@
       "quarter": "2024Q3",
       "date": "2024-09-18",
       "label": "Alaska absorbs Hawaiian",
-      "detail": "Alaska Air Group closes its acquisition of Hawaiian Airlines — ordinary consolidation, visible in HHI on the routes they shared.",
+      "detail": "Alaska buys Hawaiian outright \u2014 an ordinary merger, the kind HHI is built to catch. You can see it in the routes they shared.",
       "source": "Alaska Air Group 8-K, Sep 18 2024"
     },
     {
@@ -53,23 +53,23 @@
       "quarter": "2024Q4",
       "date": "2024-11-18",
       "label": "Spirit files Chapter 11 (first)",
-      "detail": "Spirit files a prearranged Chapter 11 converting ~$795M of notes to equity.",
+      "detail": "Spirit files for bankruptcy. The deal on the table: the airline can't pay $795M it owes, so the lenders will be paid in ownership of the company instead.",
       "source": "SAVE 8-K, Nov 2024"
     },
     {
       "id": "spirit-emergence",
       "quarter": "2025Q1",
       "date": "2025-03-12",
-      "label": "Spirit emerges — creditors own it now",
-      "detail": "Old shareholders (including the index funds) are wiped out; former bondholders — Citadel, PIMCO, Arena, Cyrus, Ares — take the equity. Spirit leaves the common-ownership pool while still flying. The index funds had already lost this one.",
-      "source": "Spirit 8-K exhibits, Mar 2025; SC 13Gs May–Aug 2025"
+      "label": "Spirit emerges \u2014 creditors own it now",
+      "detail": "Spirit exits bankruptcy under new management \u2014 its old shareholders, index funds included, are wiped out, and the lenders (hedge funds like Citadel and PIMCO) become the owners. Spirit leaves the ownership web while its planes keep flying. The index funds had already lost this one.",
+      "source": "Spirit 8-K exhibits, Mar 2025; SC 13Gs May\u2013Aug 2025"
     },
     {
       "id": "spirit-ch11-2",
       "quarter": "2025Q3",
       "date": "2025-08-29",
       "label": "Spirit files Chapter 11 (second)",
-      "detail": "Five months after emerging, Spirit is back in bankruptcy — this time headed for liquidation.",
+      "detail": "Five months after escaping bankruptcy, Spirit is back in it \u2014 and this time the company is headed for shutdown, not rescue.",
       "source": "Spirit Aviation Holdings 8-K, Aug 2025"
     },
     {
@@ -79,7 +79,7 @@
       "date_precision": "quarter",
       "beyond_series": true,
       "label": "Jet-fuel price spike",
-      "detail": "The Iran-war fuel spike raises costs on ALL routes — the confound the difference-in-differences design exists to remove.",
+      "detail": "The Iran-war fuel spike raises costs on ALL routes \u2014 the confound the difference-in-differences design exists to remove.",
       "source": "EIA jet fuel spot prices, 2026"
     },
     {
@@ -97,7 +97,7 @@
       "date": "2026-05-15",
       "beyond_series": true,
       "label": "Buffett returns: Berkshire takes 6.1% of Delta",
-      "detail": "Two weeks after Spirit's shutdown, Berkshire discloses a $2.6B Delta stake — the cross-holding web starts rewiring itself before the experiment even reports.",
+      "detail": "Two weeks after Spirit's shutdown, Berkshire discloses a $2.6B Delta stake \u2014 the cross-holding web starts rewiring itself before the experiment even reports.",
       "source": "Berkshire SC 13G on DAL, May 2026; CNBC 2026-05-15"
     }
   ]

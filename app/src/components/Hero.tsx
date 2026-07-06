@@ -66,7 +66,10 @@ export function Hero() {
               they found fares 3–7% higher where this shared ownership ran
               thickest.
             </p>
-            <cite>Journal of Finance, 2018 — the paper that started the fight</cite>
+            <cite>
+              Journal of Finance, 2018 — the paper that started the fight.
+              (This site calls them “AST,” their initials.)
+            </cite>
           </div>
           <div className="camp-card" style={{ "--camp": "var(--dgs)" } as React.CSSProperties}>
             <div className="camp-side">The rebuttal · Dennis, Gerardi &amp; Schenone, 2022</div>
@@ -82,7 +85,10 @@ export function Hero() {
               the discovery was an artifact of how it was measured, not a
               fact about the world.
             </p>
-            <cite>Journal of Finance, 2022 — same journal, opposite verdict</cite>
+            <cite>
+              Journal of Finance, 2022 — same journal, opposite verdict.
+              (This site calls them “the critics.”)
+            </cite>
           </div>
         </div>
 

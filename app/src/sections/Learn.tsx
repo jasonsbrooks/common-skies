@@ -63,8 +63,9 @@ export function Learn() {
 
         <div className="primer">
           <p>
-            The official score is called <strong>HHI</strong> (initials of
-            the economists who invented it). The recipe is simple:{" "}
+            The official score is called <strong>HHI</strong> (the
+            Herfindahl–Hirschman Index, after the two economists who invented
+            it). The recipe is simple:{" "}
             <em>
               take each company's percent of the market, square it, and add
               the squares up.

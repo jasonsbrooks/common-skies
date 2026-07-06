@@ -33,12 +33,15 @@ export function Prediction() {
         <div className="section-kicker">④ The prediction</div>
         <h2>Reality grades this page in early 2027</h2>
         <p className="section-lede">
-          Spirit's shutdown is a natural experiment — but a naive before/after
-          would be poisoned by the 2026 fuel spike, which raised fares on{" "}
-          <em>every</em> route. So the registered test is a{" "}
+          Scientists would never be allowed to shut down an airline just to
+          see what happens to prices — but reality just ran that experiment
+          for us. There's a trap, though: fuel prices spiked at the same
+          time, raising fares on <em>every</em> route, so simply comparing
+          before and after would mix the two stories together. The fix is a{" "}
           <Term t="difference-in-differences" />: compare the routes Spirit
           left against near-identical routes it never flew. The fuel spike
-          hits both groups; subtracting one from the other cancels it.
+          hits both groups equally — subtract one from the other and it
+          cancels out, leaving only Spirit's fingerprint.
         </p>
 
         <div className="did-design">
@@ -93,9 +96,9 @@ export function Prediction() {
                       {p.predictedSpreadPct.toFixed(1)}%
                     </div>
                     <div className="pred-split">
-                      {p.concentrationChannelPct.toFixed(1)}% concentration ·{" "}
+                      +{p.concentrationChannelPct.toFixed(1)}% fewer rivals ·{" "}
                       <span style={{ color: r === "ast" ? "var(--ast)" : "var(--dgs)" }}>
-                        {p.commonOwnershipChannelPct.toFixed(1)}% disputed
+                        +{p.commonOwnershipChannelPct.toFixed(1)}% shared owners
                       </span>
                     </div>
                     {active && <div className="pred-yours">your settings</div>}
@@ -117,15 +120,18 @@ export function Prediction() {
         )}
 
         <p className="pred-referee">
-          <strong>What a result can settle — honestly:</strong> a spread near
-          +3.2% vindicates the critics' package of assumptions; near +4.5%,
-          AST's. The two channels can't be separately observed in one number —
-          this experiment is a referee between packages, not a judge of the
-          mechanism. (And note the disputed channel <em>adds</em> to the
-          spread here: creditor-owned Spirit sat outside the ownership web, so
-          its passengers flow toward commonly-held carriers — the sign flip
-          from step ③.) A result far outside the whole range would indict
-          both camps' shared framework.
+          <strong>What a result can settle — honestly:</strong> if fares land
+          near +3.2%, the critics' way of measuring looks right; near +4.5%,
+          AST's does. What one number <em>can't</em> do is tell the two
+          causes apart — "fewer rivals" and "shared owners" both push fares
+          the same direction here, so this experiment referees between the
+          two camps' full playbooks rather than isolating the mechanism.
+          (Why do shared owners <em>add</em> to the rise? Because
+          creditor-owned Spirit sat outside the ownership web — when it
+          vanished, passengers flowed toward the commonly-owned airlines.
+          That's the surprise from step ③.) And if the result lands far
+          outside the whole +3-to-+5 range, both camps' shared playbook is
+          missing something big.
         </p>
 
         <div className="timeline">
@@ -139,11 +145,13 @@ export function Prediction() {
         </div>
 
         <p className="prereg-chip">
-          Pre-registered, verifiably: the predictions above were frozen in
-          commit <code>{prereg.commit.slice(0, 12)}</code> on {prereg.frozen} —{" "}
-          <code>{prereg.path}</code> in this site's repository, committed
-          before any post-shutdown fare data existed. Whichever dial setting
-          reality vindicates, this page said so first.
+          How you know we're not cheating: these predictions were locked into
+          this site's public code history on {prereg.frozen} — before any
+          post-shutdown fare data existed — in commit{" "}
+          <code>{prereg.commit.slice(0, 12)}</code> (a commit is a
+          tamper-evident snapshot; think of it as a notarized timestamp
+          anyone can inspect at <code>{prereg.path}</code>). When the real
+          numbers arrive, we can't quietly rewrite what we predicted.
         </p>
       </div>
     </section>
