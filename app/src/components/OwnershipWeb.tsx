@@ -32,6 +32,9 @@ export interface OwnershipWebProps {
   assumption: ControlAssumption;
   /** Optional relative node weights (e.g. market shares, 0–1). */
   weights?: Record<string, number>;
+  /** Pin owner positions (left→right). Owners keep their slot even when a
+   * stake hits zero — no layout jumps while dragging sliders. */
+  ownerOrder?: string[];
   maxOwners?: number;
   height?: number;
 }
@@ -49,6 +52,7 @@ export function OwnershipWeb({
   carrierNames,
   assumption,
   weights,
+  ownerOrder,
   maxOwners = 6,
   height = 190,
 }: OwnershipWebProps) {
@@ -59,6 +63,10 @@ export function OwnershipWeb({
   );
 
   const owners = useMemo(() => {
+    if (ownerOrder) {
+      const present = new Set(relevant.map((s) => s.owner));
+      return ownerOrder.filter((o) => present.has(o)).slice(0, maxOwners);
+    }
     const strength = new Map<string, number>();
     for (const s of relevant) {
       strength.set(s.owner, (strength.get(s.owner) ?? 0) + s.pct);
@@ -73,7 +81,7 @@ export function OwnershipWeb({
       })
       .slice(0, maxOwners)
       .map(([o]) => o);
-  }, [relevant, maxOwners]);
+  }, [relevant, maxOwners, ownerOrder]);
 
   const ownerX = (i: number) =>
     owners.length === 1 ? W / 2 : 34 + (i * (W - 68)) / (owners.length - 1);
@@ -91,7 +99,7 @@ export function OwnershipWeb({
       {relevant.map((s) => {
         const oi = owners.indexOf(s.owner);
         const ci = carriers.indexOf(s.carrier);
-        if (oi < 0 || ci < 0) return null;
+        if (oi < 0 || ci < 0 || s.pct <= 0) return null;
         const dead = passive && isBig(s.owner);
         return (
           <line

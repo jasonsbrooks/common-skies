@@ -12,11 +12,13 @@ export function Learn() {
   const [redStake, setRedStake] = useState(0);
 
   const shares = { BLU: 0.5, RED: 0.5 };
+  // FundCo rows are always present (even at 0) so its node keeps its slot
+  // in the web while dragging — the math core ignores zero-beta stakes.
   const stakes: OwnershipStake[] = [
     { owner: "Blue's founder", carrier: "BLU", beta: FOUNDER_STAKE },
     { owner: "Red's founder", carrier: "RED", beta: FOUNDER_STAKE },
-    ...(bluStake > 0 ? [{ owner: "FundCo", carrier: "BLU", beta: bluStake }] : []),
-    ...(redStake > 0 ? [{ owner: "FundCo", carrier: "RED", beta: redStake }] : []),
+    { owner: "FundCo", carrier: "BLU", beta: bluStake },
+    { owner: "FundCo", carrier: "RED", beta: redStake },
   ];
   const h = Math.round(hhi(shares) * 10000);
   const delta = Math.round(mhhiDelta(shares, stakes, "proportional") * 10000);
@@ -102,6 +104,7 @@ export function Learn() {
               carrierNames={TOY_NAMES}
               assumption="proportional"
               weights={shares}
+              ownerOrder={["Blue's founder", "FundCo", "Red's founder"]}
               maxOwners={3}
               height={200}
             />
