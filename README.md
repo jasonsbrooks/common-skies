@@ -20,6 +20,37 @@ docs/
   prereg/     The dated pre-registration artifact (the site footer cites its commit hash)
 ```
 
-## Status
+## Run it locally
 
-Early scaffold. See [docs/plans/01-high-level-plan.md](docs/plans/01-high-level-plan.md).
+```bash
+cd app
+npm install
+npm run dev        # http://localhost:5173
+```
+
+The data bundle is checked in — no pipeline run, keys, or backend needed. To
+rebuild the bundle from raw government data anyway:
+
+```bash
+cd pipeline
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python fetch_fares.py   # DOT Table 6 via Socrata (~140MB cache)
+.venv/bin/python fetch_t100.py    # BTS T-100 yearly zips via TranStats
+.venv/bin/python build_bundle.py  # deterministic; asserts its own coherence
+.venv/bin/python -m pytest tests/
+```
+
+## Deploy
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`: install → test
+(including the golden-vector parity suite) → build → GitHub Pages. Enable
+Pages in repo settings with source "GitHub Actions" once.
+
+## Pre-registration
+
+The Spirit-shutdown difference-in-differences predictions are frozen in
+[docs/prereg/2026-07-06-spirit-shutdown-did.md](docs/prereg/2026-07-06-spirit-shutdown-did.md);
+the site footer cites the freezing commit's hash. Reality grades them ~Q1 2027.
+
+See [docs/plans/01-high-level-plan.md](docs/plans/01-high-level-plan.md) for
+the build plan and phase subplans.
