@@ -1,0 +1,104 @@
+{
+  "events": [
+    {
+      "id": "berkshire-entry",
+      "quarter": "2016Q4",
+      "date": "2016-11-14",
+      "label": "Berkshire buys into all four majors",
+      "detail": "Berkshire Hathaway's 13F (filed Nov 14, 2016) reveals new stakes in American, Delta, United, and Southwest — a famously un-diversified investor joins the common-ownership pool at scale.",
+      "source": "Berkshire Hathaway 13F, 2016Q3/Q4"
+    },
+    {
+      "id": "covid",
+      "quarter": "2020Q2",
+      "date": "2020-03-15",
+      "label": "COVID-19 collapses air travel",
+      "detail": "US passenger volumes fall ~95% at the trough. Fares and route networks convulse; every series on this chart shows the scar.",
+      "source": "TSA checkpoint data, 2020"
+    },
+    {
+      "id": "buffett-exit",
+      "quarter": "2020Q2",
+      "date": "2020-05-02",
+      "label": "Berkshire exits all airline stakes",
+      "detail": "Buffett announces Berkshire sold its entire ~10% stakes in all four majors during April 2020 ('The world has changed for the airlines'). A large undiversified-ish cross-holder leaves the pool — watch MHHI delta step down.",
+      "source": "Berkshire Hathaway annual meeting, May 2, 2020; CNBC 2020-05-02"
+    },
+    {
+      "id": "frontier-ipo",
+      "quarter": "2021Q2",
+      "date": "2021-04-01",
+      "label": "Frontier IPOs (Indigo keeps control)",
+      "detail": "Frontier goes public but remains a controlled company under Indigo Partners — index funds hold only a sliver. Not every airline is index-owned alike.",
+      "source": "ULCC S-1/DEF 14A 2022 (controlled company)"
+    },
+    {
+      "id": "jetblue-spirit-blocked",
+      "quarter": "2024Q1",
+      "date": "2024-01-16",
+      "label": "JetBlue–Spirit merger blocked",
+      "detail": "A federal judge blocks the $3.8B acquisition on antitrust grounds, removing Spirit's exit ramp and setting up its bankruptcy.",
+      "source": "US v. JetBlue, D. Mass., Jan 16 2024"
+    },
+    {
+      "id": "alaska-hawaiian",
+      "quarter": "2024Q3",
+      "date": "2024-09-18",
+      "label": "Alaska absorbs Hawaiian",
+      "detail": "Alaska Air Group closes its acquisition of Hawaiian Airlines — ordinary consolidation, visible in HHI on the routes they shared.",
+      "source": "Alaska Air Group 8-K, Sep 18 2024"
+    },
+    {
+      "id": "spirit-ch11-1",
+      "quarter": "2024Q4",
+      "date": "2024-11-18",
+      "label": "Spirit files Chapter 11 (first)",
+      "detail": "Spirit files a prearranged Chapter 11 converting ~$795M of notes to equity.",
+      "source": "SAVE 8-K, Nov 2024"
+    },
+    {
+      "id": "spirit-emergence",
+      "quarter": "2025Q1",
+      "date": "2025-03-12",
+      "label": "Spirit emerges — creditors own it now",
+      "detail": "Old shareholders (including the index funds) are wiped out; former bondholders — Citadel, PIMCO, Arena, Cyrus, Ares — take the equity. Spirit leaves the common-ownership pool while still flying. The index funds had already lost this one.",
+      "source": "Spirit 8-K exhibits, Mar 2025; SC 13Gs May–Aug 2025"
+    },
+    {
+      "id": "spirit-ch11-2",
+      "quarter": "2025Q3",
+      "date": "2025-08-29",
+      "label": "Spirit files Chapter 11 (second)",
+      "detail": "Five months after emerging, Spirit is back in bankruptcy — this time headed for liquidation.",
+      "source": "Spirit Aviation Holdings 8-K, Aug 2025"
+    },
+    {
+      "id": "fuel-spike",
+      "quarter": "2026Q2",
+      "date": "2026-04-01",
+      "date_precision": "quarter",
+      "beyond_series": true,
+      "label": "Jet-fuel price spike",
+      "detail": "The Iran-war fuel spike raises costs on ALL routes — the confound the difference-in-differences design exists to remove.",
+      "source": "EIA jet fuel spot prices, 2026"
+    },
+    {
+      "id": "spirit-shutdown",
+      "quarter": "2026Q2",
+      "date": "2026-05-02",
+      "beyond_series": true,
+      "label": "Spirit Airlines ceases operations",
+      "detail": "The natural experiment begins: a major low-cost carrier exits ~200 routes at once. Concentration jumps; the common-ownership term barely moves (Spirit was creditor-owned). The registered prediction starts its clock.",
+      "source": "Spirit Aviation Holdings, May 2, 2026"
+    },
+    {
+      "id": "berkshire-returns",
+      "quarter": "2026Q2",
+      "date": "2026-05-15",
+      "beyond_series": true,
+      "label": "Buffett returns: Berkshire takes 6.1% of Delta",
+      "detail": "Two weeks after Spirit's shutdown, Berkshire discloses a $2.6B Delta stake — the cross-holding web starts rewiring itself before the experiment even reports.",
+      "source": "Berkshire SC 13G on DAL, May 2026; CNBC 2026-05-15"
+    }
+  ]
+}

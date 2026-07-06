@@ -1,0 +1,31 @@
+{
+  "note": "Log(avg fare) regression coefficients; MHHI delta and HHI on the 0-1 scale (10,000 points = 1.0). Market-level specifications chosen because this tool's data is market-level. Verified against the papers' tables 2026-07-05 (see docs/plans/02-hour-zero-verifications.md).",
+  "regimes": [
+    {
+      "id": "ast",
+      "label": "AST (2018) — common ownership raises fares",
+      "coefMhhiDelta": 0.202,
+      "coefMhhiDeltaSE": 0.0356,
+      "coefHhi": 0.255,
+      "coefHhiSE": 0.0244,
+      "citation": "Azar, Schmalz & Tecu (2018), 'Anticompetitive Effects of Common Ownership', J. Finance 73(4):1513-1565, Table 3 col. (6): market-level, full controls, 2001Q1-2014Q4."
+    },
+    {
+      "id": "dgs",
+      "label": "DGS (2022) — the effect is statistically zero",
+      "coefMhhiDelta": 0.063,
+      "coefMhhiDeltaSE": 0.088,
+      "coefHhi": 0.225,
+      "coefHhiSE": 0.053,
+      "citation": "Dennis, Gerardi & Schenone (2022), 'Common Ownership Does Not Have Anticompetitive Effects in the Airline Industry', J. Finance 77(5):2765-2798, Table V Panel B col. (4): IV specification, market-level. Coefficient statistically indistinguishable from zero."
+    }
+  ],
+  "context": {
+    "replication": "DGS first replicate AST's market-level estimate almost exactly (0.196 vs 0.202; DGS Table II Panel B) before their corrections — the disagreement is about assumptions, not data errors.",
+    "decomposition": "DGS Tables III-IV: placebo ownership + true market shares still yields a significant positive coefficient (0.212), while true ownership + placebo market shares yields ~0 or negative (-0.144) — their case that the correlation lives in the market-share component.",
+    "refutation": "AST, 'A Refutation of...' (SSRN 4158149, 2022); DGS, 'A Surrebuttal...' (SSRN 4307814, 2022). The fight remains open.",
+    "framework": "O'Brien & Salop (2000), Antitrust Law Journal 67:559 — the MHHI framework.",
+    "astSampleMeanMhhiDelta": 1870,
+    "astSampleMeanMhhiDeltaSource": "AST 2018 Table 2 (market-carrier level, 2001Q1-2014Q4)"
+  }
+}
