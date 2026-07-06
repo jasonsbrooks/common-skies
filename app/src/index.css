@@ -620,6 +620,41 @@ button {
   margin: 2px 0 0;
 }
 
+.web-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 12px 12px 10px;
+  margin-bottom: 14px;
+}
+
+.web-title {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.web {
+  width: 100%;
+  height: auto;
+}
+
+.web-label {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-weight: 600;
+  fill: var(--ink-muted);
+}
+
+.web-caption {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  margin: 6px 2px 0;
+}
+
 @media (max-width: 900px) {
   .explore-grid {
     grid-template-columns: 1fr;
@@ -659,5 +694,9 @@ button {
   }
   body {
     font-size: 16.5px;
+  }
+  /* Too tall to pin on a phone — let it scroll. */
+  .controlbar {
+    position: static;
   }
 }

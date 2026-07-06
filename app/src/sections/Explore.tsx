@@ -1,22 +1,47 @@
+import { OwnershipWeb } from "../components/OwnershipWeb";
 import { RouteArc } from "../components/RouteArc";
 import { RouteCharts } from "../components/RouteCharts";
 import { RoutePicker, useSelectedRoute } from "../components/RoutePicker";
 import { Term } from "../components/Term";
-import { shortCity } from "../lib/bundle";
+import { shortCity, snapshotForQuarter } from "../lib/bundle";
 import { useAppState } from "../state";
 
 function RouteFacts() {
   const route = useSelectedRoute();
-  const { bundle } = useAppState();
+  const { bundle, assumption } = useAppState();
   const s = route.series;
   const lastIdx = [...s.hhi].map((v, i) => (v !== null ? i : -1)).reduce((a, b) => Math.max(a, b), 0);
-  const topCarriers = Object.entries(s.shares[lastIdx] ?? {})
+  const shares = s.shares[lastIdx] ?? {};
+  const topCarriers = Object.entries(shares)
     .sort(([, a], [, b]) => b - a)
     .slice(0, 4);
+  const quarter = s.quarters[lastIdx]!;
+  const snapshot = snapshotForQuarter(bundle, quarter);
+  const stakes = bundle.ownershipSnapshots[snapshot] ?? [];
+  const webCarriers = topCarriers.map(([c]) => c);
 
   return (
     <div className="facts">
       <RouteArc route={route} />
+      <div className="web-card">
+        <div className="web-title">The web behind this route</div>
+        <OwnershipWeb
+          stakes={stakes}
+          carriers={webCarriers}
+          carrierNames={bundle.carrierNames}
+          assumption={assumption}
+          weights={shares}
+        />
+        <p className="web-caption">
+          Each wire is an ownership stake ({snapshot.slice(0, 4)} filings).{" "}
+          <Term t="HHI" /> sees only the bottom row of airlines;{" "}
+          <Term t="MHHI delta" /> counts the wires.
+          {assumption === "passive-index" &&
+            " Greyed wires: the Big Three, currently set to not count."}
+          {" "}Hollow circles: no reported cross-holders (regional operators,
+          mostly).
+        </p>
+      </div>
       <dl>
         <div>
           <dt>Distance</dt>

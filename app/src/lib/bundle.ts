@@ -101,3 +101,17 @@ export function shortCity(city: string): string {
 export function routeLabel(route: Route): string {
   return `${shortCity(route.city1)} ↔ ${shortCity(route.city2)}`;
 }
+
+function quarterNum(q: string): number {
+  const [year, qq] = q.split("Q");
+  return Number(year) * 4 + Number(qq) - 1;
+}
+
+/** Ownership snapshot in effect for a given quarter (per snapshotRanges). */
+export function snapshotForQuarter(bundle: Bundle, quarter: string): string {
+  const n = quarterNum(quarter);
+  for (const r of bundle.snapshotRanges) {
+    if (quarterNum(r.from) <= n && n <= quarterNum(r.to)) return r.snapshot;
+  }
+  return bundle.snapshotRanges[bundle.snapshotRanges.length - 1]!.snapshot;
+}
