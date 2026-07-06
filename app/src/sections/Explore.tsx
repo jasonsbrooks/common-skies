@@ -1,3 +1,4 @@
+import { DialsIntro } from "../components/Dials";
 import { OwnershipWeb } from "../components/OwnershipWeb";
 import { RouteArc } from "../components/RouteArc";
 import { RouteCharts } from "../components/RouteCharts";
@@ -79,6 +80,7 @@ export function Explore() {
           shares</Term>; <Term t="MHHI delta" /> adds the invisible layer from{" "}
           <Term t="common ownership" />. Hover the dots for the story beats.
         </p>
+        <DialsIntro />
         <RoutePicker />
         <div className="explore-grid">
           <RouteCharts route={route} />

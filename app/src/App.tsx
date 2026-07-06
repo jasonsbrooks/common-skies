@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { loadBundle, type Bundle } from "./lib/bundle";
 import { AppStateProvider, useAppState, type SectionId } from "./state";
-import { ControlBar } from "./components/ControlBar";
+import { StickyDials } from "./components/Dials";
 import { Hero } from "./components/Hero";
 import { StoryRail } from "./components/StoryRail";
 import { Explore } from "./sections/Explore";
@@ -49,7 +49,26 @@ function ResumeBanner() {
 function Page() {
   const { setLastSection } = useAppState();
   const [active, setActive] = useState<SectionId | null>(null);
+  const [pastDialsIntro, setPastDialsIntro] = useState(false);
   const seenOnce = useRef(false);
+
+  useEffect(() => {
+    // Plain scroll math (not IntersectionObserver): the condensed bar may
+    // only appear once the full dials intro has scrolled above the viewport
+    // — never before the dials have been explained.
+    const check = () => {
+      const intro = document.getElementById("dials-intro");
+      if (!intro) return;
+      setPastDialsIntro(intro.getBoundingClientRect().bottom < 60);
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -90,9 +109,9 @@ function Page() {
       <ResumeBanner />
       <Hero />
       <Learn />
-      {/* Wrapper scopes the sticky control bar to the data sections. */}
+      {/* Wrapper scopes the sticky condensed dials to the data sections. */}
       <div className="dial-scope">
-        <ControlBar />
+        <StickyDials visible={pastDialsIntro} />
         <Explore />
         <Simulate />
         <Prediction />

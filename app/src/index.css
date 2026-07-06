@@ -409,6 +409,76 @@ button {
   font-style: normal;
 }
 
+/* ---------- dials intro ---------- */
+
+.dials-intro {
+  margin: 30px 0 6px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 14px;
+  background: var(--paper-raised);
+  padding: 20px 22px 16px;
+}
+
+.dials-intro-header {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+
+.dials-intro-header span {
+  font-weight: 400;
+  color: var(--ink-muted);
+  letter-spacing: 0;
+}
+
+.dial-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.dial-card h3 {
+  font-size: 18px;
+  margin: 2px 0 8px;
+}
+
+.dial-card p {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-muted);
+  margin-bottom: 12px;
+}
+
+.dial-num {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.dial-effect {
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  margin: 10px 0 0;
+}
+
+.translation.compact {
+  font-size: 14px;
+  max-width: 34ch;
+  margin-top: 0;
+}
+
+@media (max-width: 820px) {
+  .dial-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- explore ---------- */
 
 .route-picker {
@@ -485,11 +555,47 @@ button {
   padding: 14px 14px 8px;
 }
 
+.chart-card {
+  position: relative;
+}
+
+.chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 2px 4px 8px;
+  min-height: 38px;
+}
+
 .chart-title {
   font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 600;
-  margin: 2px 4px 8px;
+}
+
+.chart-readout {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--ink-muted);
+  text-align: right;
+  line-height: 1.45;
+}
+
+.chart-readout strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-readout .readout-dim {
+  color: var(--ink-faint);
+}
+
+.readout-shares {
+  display: block;
+  font-size: 11.5px;
+  color: var(--ink-faint);
 }
 
 .chart-sub {
@@ -518,42 +624,10 @@ button {
   fill: var(--ink-muted);
 }
 
-.chart-tip {
-  position: absolute;
-  top: 8px;
-  transform: translateX(-50%);
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--font-ui);
-  font-size: 12.5px;
-  line-height: 1.45;
-  border-radius: 8px;
-  padding: 9px 12px;
-  pointer-events: none;
-  z-index: 30;
-  min-width: 150px;
-  box-shadow: 0 6px 24px rgba(30, 25, 15, 0.28);
-}
-
-.chart-tip-q {
-  font-weight: 700;
-  margin-bottom: 2px;
-}
-
-.tip-dim {
-  opacity: 0.65;
-}
-
-.tip-shares {
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-  margin-top: 6px;
-  padding-top: 6px;
-}
-
 .event-tip {
   position: absolute;
-  top: -6px;
-  transform: translateX(-50%) translateY(-100%);
+  top: 74px;
+  transform: translateX(-50%);
   width: min(330px, 80vw);
   background: var(--paper-raised);
   border: 1px solid var(--hairline-strong);

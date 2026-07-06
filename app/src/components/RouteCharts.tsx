@@ -57,20 +57,28 @@ function useHoverHandlers(x: ReturnType<typeof scaleLinear<number, number>>, n: 
 function ChartFrame({
   h,
   title,
+  readout,
+  overlay,
   children,
   handlers,
 }: {
   h: number;
   title: ReactNode;
+  readout?: ReactNode;
+  overlay?: ReactNode;
   children: ReactNode;
   handlers: ReturnType<typeof useHoverHandlers>;
 }) {
   return (
     <div className="chart-card">
-      <div className="chart-title">{title}</div>
+      <div className="chart-head">
+        <div className="chart-title">{title}</div>
+        <div className="chart-readout">{readout}</div>
+      </div>
       <svg viewBox={`0 0 ${W} ${h}`} className="chart" {...handlers}>
         {children}
       </svg>
+      {overlay}
     </div>
   );
 }
@@ -139,6 +147,8 @@ function EventLayer({
           style={{ cursor: "help" }}
         >
           <line x1={x(i)} x2={x(i)} y1={M.top - 4} y2={h - M.bottom} stroke="var(--hairline-strong)" strokeDasharray="2 4" />
+          {/* generous invisible hit target */}
+          <circle cx={x(i)} cy={M.top - 10} r="12" fill="transparent" />
           <circle cx={x(i)} cy={M.top - 10} r="4.5" fill="var(--paper)" stroke="var(--ink-muted)" strokeWidth="1.3" />
           {evs.length > 1 && (
             <text x={x(i)} y={M.top - 6.6} className="event-count" textAnchor="middle">
@@ -157,7 +167,9 @@ export function RouteCharts({ route }: { route: Route }) {
   const n = s.quarters.length;
   const x = useXScale(n);
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
-  const [eventTip, setEventTip] = useState<{ evs: BundleEvent[]; xFrac: number } | null>(null);
+  const [eventTip, setEventTip] = useState<
+    { evs: BundleEvent[]; xFrac: number; chart: "fare" | "conc" } | null
+  >(null);
 
   const chartEvents = bundle.events.filter((e) => !e.beyond_series);
   const mhhiTarget = assumption === "proportional" ? s.mhhiDeltaAst : s.mhhiDeltaPassive;
@@ -181,14 +193,42 @@ export function RouteCharts({ route }: { route: Route }) {
   }, [s]);
 
   const handlers = useHoverHandlers(x, n, setHoverIdx);
-  const i = hoverIdx;
-  const shares = i !== null ? s.shares[i] : null;
+  // Readouts fall back to the latest quarter with data, so they always teach.
+  const lastIdx = s.fare.reduce<number>(
+    (acc, v, idx) => (v !== null ? idx : acc),
+    0,
+  );
+  const i = hoverIdx ?? lastIdx;
+  const isLive = hoverIdx !== null;
+  const shares = s.shares[i];
+
+  const eventTipBox = (tip: { evs: BundleEvent[]; xFrac: number } | null) =>
+    tip && (
+      <div
+        className="event-tip"
+        style={{ left: `${Math.min(0.78, Math.max(0.22, tip.xFrac)) * 100}%` }}
+      >
+        {tip.evs.map((e) => (
+          <div key={e.id} className="event-tip-item">
+            <strong>{e.label}</strong>
+            <span>{e.detail}</span>
+          </div>
+        ))}
+      </div>
+    );
 
   return (
     <div className="charts">
       <ChartFrame
         h={FARE_H}
         handlers={handlers}
+        overlay={eventTipBox(eventTip?.chart === "fare" ? eventTip : null)}
+        readout={
+          <>
+            <span className={isLive ? "" : "readout-dim"}>{s.quarters[i]}</span>{" "}
+            <strong>{s.fare[i] !== null ? `$${s.fare[i]!.toFixed(0)}` : "—"}</strong>
+          </>
+        }
         title={
           <>
             Average one-way fare{" "}
@@ -207,14 +247,37 @@ export function RouteCharts({ route }: { route: Route }) {
             </g>
           ))}
         <path d={seriesPath(fareAnim, x, fareY)} fill="none" stroke="var(--fare)" strokeWidth="2" />
-        <EventLayer events={chartEvents} quarters={s.quarters} x={x} h={FARE_H} onHover={setEventTip} />
-        <Crosshair idx={i} x={x} h={FARE_H} />
+        <EventLayer
+          events={chartEvents}
+          quarters={s.quarters}
+          x={x}
+          h={FARE_H}
+          onHover={(t) => setEventTip(t ? { ...t, chart: "fare" } : null)}
+        />
+        <Crosshair idx={hoverIdx} x={x} h={FARE_H} />
         <XAxis quarters={s.quarters} x={x} h={FARE_H} />
       </ChartFrame>
 
       <ChartFrame
         h={CONC_H}
         handlers={handlers}
+        overlay={eventTipBox(eventTip?.chart === "conc" ? eventTip : null)}
+        readout={
+          <>
+            <span className={isLive ? "" : "readout-dim"}>{s.quarters[i]}</span>{" "}
+            HHI <strong>{s.hhi[i]?.toLocaleString() ?? "—"}</strong> · MHHI Δ{" "}
+            <strong>{mhhiTarget[i]?.toLocaleString() ?? "—"}</strong>
+            {shares && (
+              <span className="readout-shares">
+                {Object.entries(shares)
+                  .sort(([, a], [, b]) => b - a)
+                  .slice(0, 4)
+                  .map(([c, v]) => `${(bundle.carrierNames[c] ?? c).split(" ")[0]} ${(v * 100).toFixed(0)}%`)
+                  .join(" · ")}
+              </span>
+            )}
+          </>
+        }
         title={
           <>
             Market concentration{" "}
@@ -253,46 +316,17 @@ export function RouteCharts({ route }: { route: Route }) {
           stroke="var(--mhhi)"
           strokeWidth="2.2"
         />
-        <EventLayer events={chartEvents} quarters={s.quarters} x={x} h={CONC_H} onHover={setEventTip} />
-        <Crosshair idx={i} x={x} h={CONC_H} />
+        <EventLayer
+          events={chartEvents}
+          quarters={s.quarters}
+          x={x}
+          h={CONC_H}
+          onHover={(t) => setEventTip(t ? { ...t, chart: "conc" } : null)}
+        />
+        <Crosshair idx={hoverIdx} x={x} h={CONC_H} />
         <XAxis quarters={s.quarters} x={x} h={CONC_H} />
       </ChartFrame>
 
-      {i !== null && (
-        <div className="chart-tip" style={{ left: `${(x(i) / W) * 100}%` }}>
-          <div className="chart-tip-q">{s.quarters[i]}</div>
-          <div>Fare {s.fare[i] !== null ? `$${s.fare[i]!.toFixed(0)}` : "—"}</div>
-          <div>HHI {s.hhi[i]?.toLocaleString() ?? "—"}</div>
-          <div>
-            MHHI Δ {mhhiTarget[i]?.toLocaleString() ?? "—"}
-            <span className="tip-dim"> ({assumption === "proportional" ? "AST view" : "passive-index view"})</span>
-          </div>
-          {shares && (
-            <div className="tip-shares">
-              {Object.entries(shares)
-                .sort(([, a], [, b]) => b - a)
-                .slice(0, 5)
-                .map(([c, v]) => (
-                  <div key={c}>
-                    <span className="tip-dim">{bundle.carrierNames[c] ?? c}</span>{" "}
-                    {(v * 100).toFixed(0)}%
-                  </div>
-                ))}
-            </div>
-          )}
-        </div>
-      )}
-
-      {eventTip && (
-        <div className="event-tip" style={{ left: `${eventTip.xFrac * 100}%` }}>
-          {eventTip.evs.map((e) => (
-            <div key={e.id} className="event-tip-item">
-              <strong>{e.label}</strong>
-              <span>{e.detail}</span>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
