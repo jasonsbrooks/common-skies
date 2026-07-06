@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+*.local
+
+# Raw data downloads are cached locally, not committed (large; pipeline re-fetches)
+data/raw/*
+!data/raw/.gitkeep
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Claude Code session dir
+.claude/
