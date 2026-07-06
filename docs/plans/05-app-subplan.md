@@ -1,5 +1,15 @@
 # Phase 4 Subplan — App Shell + Explore View
 
+## Decisions locked with Jason (2026-07-06)
+
+- **Editorial aesthetic** (data-journalism: serif display, off-white, restrained palette). Revisit at the end if it reads plain.
+- **Default route = a classic major-vs-major market**, with preset "highlight route" chips for one-click swaps (SFO↔LAX, a Spirit-heavy route, etc.).
+- **Route locator arc**: small US-outline map with the route's arc, subtle draw-in animation on route change. Editorial locator-map style, not a map *view*. First to cut inside Phase 4 if it looks cheap or runs long.
+- **Both toggles global + the translation sentence** ships (upgraded from stretch): the regime toggle always has a visible consequence, e.g. "Under AST's estimate, common ownership adds ~$12 to the average fare on this route."
+- **Resume state in localStorage**: active section, selected route, toggle settings persist across refresh. On return, a small "Welcome back — jump back to ② Explore · or start over" banner (no auto-scroll; less disorienting).
+- **Desktop-first**; mobile just has to not look broken (charts scale via viewBox, panels stack).
+- **Plain-language rule (site-wide):** no unexplained jargon anywhere. Every technical term (market share, HHI, MHHI delta, common ownership, index fund, coefficient, difference-in-differences) gets an inline plain-English definition or a dotted-underline tooltip (`<Term>` component). Hero written for a reader with zero background. MHHIΔ displayed in points (0–10,000) with a one-time scale explainer.
+
 ## Design decisions (proposed)
 
 - **Charts are hand-rolled SVG React components** with only `d3-scale` + `d3-shape` as helpers (~10KB). Rationale: event annotations, the toggle morph animation, and the ownership web all need pixel-level control a chart lib fights us on; for this assignment, chart craft is part of the demo. Series morphs use a small `useAnimatedSeries` hook (rAF lerp between the two precomputed series — both have identical quarter grids, so interpolation is index-wise and trivial).
