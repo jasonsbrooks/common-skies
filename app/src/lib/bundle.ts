@@ -15,6 +15,9 @@ export interface Route {
   city2: string;
   miles: number;
   meanDailyPax: number;
+  /** Normalized 2026Q1 shares — Spirit's last full quarter. */
+  latestShares: Record<string, number> | null;
+  latestSharesQuarter: string;
   series: RouteSeries;
 }
 
