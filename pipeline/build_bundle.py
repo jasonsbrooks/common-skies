@@ -193,13 +193,26 @@ def main() -> None:
         }
 
     routes_out = []
+    latest_y, latest_q = TREATMENT_QUARTER
     for route in selected:
         meta = route_meta[route]
+        # 2026Q1 shares — the honest "before" state for the Spirit scenario
+        # (last full pre-shutdown quarter; the bundled series ends 2025Q4).
+        raw_latest = shares_by_rq.get((route, latest_y, latest_q))
+        latest_shares = None
+        if raw_latest:
+            total = sum(raw_latest.values())
+            latest_shares = {
+                c: round(p / total, 4)
+                for c, p in sorted(raw_latest.items(), key=lambda kv: -kv[1])[:8]
+            }
         routes_out.append({
             "id": f"{route[0]}-{route[1]}",
             "city1": meta["city1"], "city2": meta["city2"],
             "miles": meta["miles"],
             "meanDailyPax": round(qa_stats[route]["mean_daily_pax"], 1),
+            "latestShares": latest_shares,
+            "latestSharesQuarter": f"{latest_y}Q{latest_q}",
             "series": series_for(route),
         })
 
