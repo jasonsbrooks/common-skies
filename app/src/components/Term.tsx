@@ -4,21 +4,21 @@ import { useState, type ReactNode } from "react";
  * (or an inline explanation in the surrounding sentence). */
 export const GLOSSARY: Record<string, string> = {
   "index fund":
-    "A fund that buys a little of every company in the market automatically, instead of picking winners. Most 401(k)s are built on them — which is how the same three firms ended up owning part of every airline.",
+    "A fund that automatically buys a small slice of every big company instead of trying to pick winners. It's cheap and it works, so most retirement savings (401(k)s) now sit in them — run mostly by three firms: Vanguard, BlackRock, and State Street.",
   "common ownership":
-    "When the same investors own big stakes in companies that compete with each other — e.g. one fund owning chunks of American, Delta, United, and Southwest at once.",
+    "When the same investors own pieces of companies that are supposed to be competing — like one fund owning chunks of American, Delta, United, AND Southwest at the same time. The question: do 'rivals' with the same owners really fight each other?",
   "market share":
-    "A carrier's slice of all passengers flying a route. If half the people flying Chicago–Miami fly American, American's share is 50%.",
+    "A company's percent of the market. If half the people flying Chicago–Miami fly American, American's market share on that route is 50%.",
   HHI:
-    "A standard 0–10,000 score for how concentrated a market is: add up the square of every company's market share. One monopolist = 10,000. Regulators flag mergers above ~2,500.",
+    "The official 0–10,000 score for how concentrated a market is. Recipe: take each company's percent of the market, square it, add them up. One monopolist: 100² = 10,000. Two equal rivals: 50² + 50² = 5,000. Regulators start worrying above ~2,500. It counts market shares only — it can't see who owns the companies.",
   "MHHI delta":
-    "The extra, invisible concentration you get if owning your rival's stock makes you compete less hard. It's added on top of HHI and uses the same 0–10,000 scale. It's the number this entire fight is about.",
+    "The extra points added to HHI when competitors share owners. Zero if every company has separate owners; big if the same funds own everyone. Same 0–10,000 scale as HHI. Whether these points are real — whether shared ownership actually softens competition — is what this whole fight is about.",
   coefficient:
-    "The multiplier from a statistical study: how much fares move when concentration moves by a given amount. Each camp published their own.",
+    "A multiplier measured from data: 'when concentration rises this much, fares rise that much.' Each camp published its own — that disagreement is Dial 2.",
   "difference-in-differences":
-    "A way to isolate cause and effect: compare routes Spirit left against similar routes it never flew, before and after the shutdown. Anything that hits ALL routes (like a fuel spike) cancels out.",
+    "A trick for isolating cause and effect. Compare the routes Spirit left (treatment) with near-identical routes it never flew (control), before and after the shutdown. Anything that hits BOTH groups — like a fuel-price spike raising all fares — subtracts away, leaving just the effect of Spirit's exit.",
   "the Big Three":
-    "Vanguard, BlackRock, and State Street — the three giant index-fund managers that collectively hold roughly 15–25% of nearly every major U.S. airline (and most large public companies).",
+    "Vanguard, BlackRock, and State Street — the three giant index-fund managers. Together they hold roughly 15–25% of nearly every major U.S. airline, and of most large public companies.",
 };
 
 export function Term({ t, children }: { t: keyof typeof GLOSSARY; children?: ReactNode }) {

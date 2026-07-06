@@ -187,9 +187,13 @@ button {
 }
 
 .hero-standfirst {
-  font-size: clamp(18px, 2vw, 21px);
-  max-width: 62ch;
+  font-size: clamp(17.5px, 2vw, 20px);
+  max-width: 64ch;
   color: var(--ink);
+}
+
+.hero-standfirst p {
+  margin-bottom: 0.9em;
 }
 
 .hero-standfirst .subtle {
@@ -740,6 +744,138 @@ button {
 }
 
 /* ---------- learn toy ---------- */
+
+.primer {
+  max-width: 70ch;
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+
+.primer strong {
+  font-family: var(--font-ui);
+  font-size: 0.92em;
+}
+
+.scale-strip {
+  margin: 30px 0 108px;
+  font-family: var(--font-ui);
+}
+
+/* Alternate marks onto a lower row so neighbors never collide. */
+.scale-mark:nth-child(even) .scale-tick {
+  height: 52px;
+}
+
+.scale-track {
+  position: relative;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    var(--dgs-soft),
+    var(--hairline-strong) 40%,
+    var(--ast-soft) 75%,
+    var(--ast) 100%
+  );
+  max-width: 720px;
+}
+
+.scale-mark {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 130px;
+}
+
+.scale-mark:first-child {
+  transform: translateX(-20%);
+  text-align: left;
+}
+
+.scale-mark:last-child {
+  transform: translateX(-80%);
+  text-align: right;
+}
+
+.scale-tick {
+  width: 2px;
+  height: 14px;
+  background: var(--ink-muted);
+  margin: -4px auto 4px;
+}
+
+.scale-mark:first-child .scale-tick {
+  margin-left: 25px;
+}
+
+.scale-mark:last-child .scale-tick {
+  margin-right: 25px;
+}
+
+.scale-at {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.scale-label {
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.scale-detail {
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 640px) {
+  /* Narrow screens: the strip becomes a plain list. */
+  .scale-strip {
+    margin-bottom: 28px;
+  }
+  .scale-track {
+    height: auto;
+    background: none;
+  }
+  .scale-mark,
+  .scale-mark:first-child,
+  .scale-mark:last-child {
+    position: static;
+    transform: none;
+    width: auto;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    column-gap: 10px;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .scale-tick,
+  .scale-mark:nth-child(even) .scale-tick {
+    display: none;
+  }
+  .scale-detail {
+    grid-column: 2;
+  }
+}
+
+.toy-title {
+  font-size: 20px;
+  margin: 34px 0 6px;
+}
+
+.toy-setup {
+  font-size: 16.5px;
+  line-height: 1.65;
+  max-width: 70ch;
+  color: var(--ink-muted);
+}
+
+.toy-setup strong {
+  color: var(--ink);
+}
 
 .toy-grid {
   display: grid;
