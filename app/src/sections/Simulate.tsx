@@ -121,7 +121,7 @@ function SpiritScenario() {
             {routeLabel(r)}
             <span className="chip-note">
               Spirit flew {((r.latestShares!.NK ?? 0) * 100).toFixed(0)}% of it
-              {treatmentIds.has(r.id) ? " · in the registered experiment" : ""}
+              {treatmentIds.has(r.id) ? " · part of the experiment in ④" : ""}
             </span>
           </button>
         ))}
@@ -167,16 +167,22 @@ function SpiritScenario() {
       </div>
 
       <div className="wrinkle">
-        <strong>The wrinkle that makes this honest:</strong> by shutdown,
-        Spirit didn't belong to the index funds anymore — bankruptcy handed it
-        to creditors (Citadel, PIMCO, Ares…). Run the math with Spirit's{" "}
-        <em>2022</em> owners (Vanguard 9%, BlackRock 7.5%) and its exit would
-        move the common-ownership term by {wrinkle.dHypo >= 0 ? "+" : ""}
-        {wrinkle.dHypo.toLocaleString()} points on this route; with its{" "}
-        <em>actual</em> creditor owners it moves {wrinkle.dActual >= 0 ? "+" : ""}
-        {wrinkle.dActual.toLocaleString()}. The index funds had already lost
-        this one — which is exactly why the honest experiment (step ④) splits
-        the channels instead of eyeballing fares.
+        <strong>The wrinkle that makes this honest:</strong> by the time it
+        shut down, Spirit didn't belong to the index funds anymore —
+        bankruptcy had handed it to its lenders (hedge funds like Citadel and
+        PIMCO). That changes the math. If Spirit had still been owned the
+        ordinary way — its <em>2022</em> register: Vanguard 9%, BlackRock
+        7.5% — its exit would have <em>removed</em> wires from the web and
+        moved the shared-ownership score (MHHI delta) by{" "}
+        {wrinkle.dHypo >= 0 ? "+" : ""}
+        {wrinkle.dHypo.toLocaleString()} points on this route. With its{" "}
+        <em>actual</em> owners, Spirit was outside the web — so when it
+        vanished, its passengers flowed <em>toward</em> the commonly-owned
+        airlines, and the score moves {wrinkle.dActual >= 0 ? "+" : ""}
+        {wrinkle.dActual.toLocaleString()} instead. Same event, opposite
+        directions, depending on a fact about bankruptcy paperwork. That's
+        why step ④ predicts the two effects separately instead of just
+        eyeballing fares.
       </div>
     </div>
   );
@@ -212,10 +218,11 @@ function DivestScenario() {
   return (
     <div>
       <p className="scenario-note">
-        Uses the route you picked in ② ({routeLabel(route)}). Market shares
-        don't move at all — this scenario only rewires <em>ownership</em>, so
-        the concentration charge is $0.00 by construction and everything rides
-        on the disputed line.
+        Uses the route you picked in ② ({routeLabel(route)}). No airline
+        enters or leaves — the only thing that changes is <em>who owns
+        stock</em>. So the concentration charge is automatically $0.00, and
+        the entire prediction rides on the disputed line. This is the
+        cleanest possible test of the theory itself.
       </p>
       {nothingToDo && (
         <p className="scenario-callout">
@@ -237,8 +244,8 @@ function DivestScenario() {
           footnote={
             <>
               What regulators would see: nothing. <Term t="HHI" /> doesn't move
-              when only stock ownership changes — a merger review would never
-              open. MHHI Δ falls{" "}
+              when only stock ownership changes — no merger review would ever
+              open. MHHI delta falls{" "}
               {Math.round((mhhiBefore - mhhiAfter) * 10000).toLocaleString()}{" "}
               points.
             </>

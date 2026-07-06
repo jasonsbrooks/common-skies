@@ -45,7 +45,7 @@ export function Receipt({
         <span>{money(baseFare)}</span>
       </div>
       <div className="receipt-line">
-        <span>Concentration charge (ordinary market power)</span>
+        <span>Concentration charge (fewer rivals → higher fares)</span>
         <span>{money(concDollars, true)}</span>
       </div>
       <div className="receipt-line disputed" style={{ color: disputedColor }}>

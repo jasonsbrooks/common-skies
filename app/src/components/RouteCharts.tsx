@@ -265,7 +265,7 @@ export function RouteCharts({ route }: { route: Route }) {
         readout={
           <>
             <span className={isLive ? "" : "readout-dim"}>{s.quarters[i]}</span>{" "}
-            HHI <strong>{s.hhi[i]?.toLocaleString() ?? "—"}</strong> · MHHI Δ{" "}
+            HHI <strong>{s.hhi[i]?.toLocaleString() ?? "—"}</strong> · MHHI delta{" "}
             <strong>{mhhiTarget[i]?.toLocaleString() ?? "—"}</strong>
             {shares && (
               <span className="readout-shares">

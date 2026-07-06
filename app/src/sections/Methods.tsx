@@ -51,9 +51,11 @@ export function Methods() {
             from market shares times ownership overlap; feed it placebo
             ownership with true market shares and the "effect" survives
             (0.212), feed it true ownership with placebo shares and it dies
-            (−0.144). Their IV estimate — {dgs.coefMhhiDelta} (SE{" "}
-            {dgs.coefMhhiDeltaSE}) — is statistically zero. Treat bankrupt
-            carriers' shareholders as having lost control and the correlation
+            (−0.144). Their preferred estimate — {dgs.coefMhhiDelta} (SE{" "}
+            {dgs.coefMhhiDeltaSE}), using an instrumental-variable technique
+            built to break the feedback loop between prices and market
+            shares — is statistically zero. Treat bankrupt carriers'
+            shareholders as having lost control and the correlation
             attenuates to insignificance. AST published a refutation (SSRN
             4158149); DGS a surrebuttal (SSRN 4307814). The fight is open —
             which is why this site's dials exist.

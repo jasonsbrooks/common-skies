@@ -34,13 +34,15 @@ function RouteFacts() {
           weights={shares}
         />
         <p className="web-caption">
-          Each wire is an ownership stake ({snapshot.slice(0, 4)} filings).{" "}
-          <Term t="HHI" /> sees only the bottom row of airlines;{" "}
-          <Term t="MHHI delta" /> counts the wires.
+          Who owns the airlines on this route ({snapshot.slice(0, 4)}{" "}
+          filings) — each line is an ownership stake, thicker = bigger.{" "}
+          <Term t="HHI" /> sees only the bottom row; <Term t="MHHI delta" />{" "}
+          also counts the lines.
           {assumption === "passive-index" &&
-            " Greyed wires: the Big Three, currently set to not count."}
-          {" "}Hollow circles: no reported cross-holders (regional operators,
-          mostly).
+            " Greyed-out lines: the Big Three's stakes, which your Dial 1 setting says don't count."}
+          {" "}Hollow circles: airlines with no big shared owners on record —
+          mostly regional carriers, smaller airlines that operate flights on
+          behalf of the big ones.
         </p>
       </div>
       <dl>
@@ -73,12 +75,13 @@ export function Explore() {
         <div className="section-kicker">② Explore real routes</div>
         <h2>Ten years of fares on routes you've actually flown</h2>
         <p className="section-lede">
-          Every quarter since 2014: what a ticket cost between{" "}
-          {shortCity(route.city1)} and {shortCity(route.city2)}, who carried
-          the passengers, and two ways of scoring how concentrated the market
-          was — <Term t="HHI" /> counts only <Term t="market share">market
-          shares</Term>; <Term t="MHHI delta" /> adds the invisible layer from{" "}
-          <Term t="common ownership" />. Hover the dots for the story beats.
+          Now the same two scoreboards, on real data. Every quarter since
+          2014: what a ticket cost between {shortCity(route.city1)} and{" "}
+          {shortCity(route.city2)}, who carried the passengers, and both
+          scores — <Term t="HHI" /> (market shares only, gray) and the
+          purple <Term t="MHHI delta" />, the extra points for shared owners.
+          The circles along the top are real events; hover them for the
+          story.
         </p>
         <DialsIntro />
         <RoutePicker />
