@@ -162,7 +162,7 @@ function EventLayer({
 }
 
 export function RouteCharts({ route }: { route: Route }) {
-  const { bundle, assumption } = useAppState();
+  const { bundle, assumption, activeCoef, regimeId } = useAppState();
   const s = route.series;
   const n = s.quarters.length;
   const x = useXScale(n);
@@ -173,10 +173,20 @@ export function RouteCharts({ route }: { route: Route }) {
 
   const chartEvents = bundle.events.filter((e) => !e.beyond_series);
   const mhhiTarget = assumption === "proportional" ? s.mhhiDeltaAst : s.mhhiDeltaPassive;
-  // Animated: toggle flips deflate/inflate the line; route changes glide.
+  // What the fare would be with the shared-owner effect switched off,
+  // under the reader's current dials. Both dials visibly move this line.
+  const counterfactualTarget = s.fare.map((f, idx) => {
+    const m = mhhiTarget[idx];
+    if (f === null || m === null || m === undefined) return null;
+    return f * Math.exp(-activeCoef * (m / 10000));
+  });
+  // Animated: toggle flips deflate/inflate the lines; route changes glide.
   const mhhi = useAnimatedSeries(mhhiTarget);
   const hhiAnim = useAnimatedSeries(s.hhi);
   const fareAnim = useAnimatedSeries(s.fare);
+  const cfAnim = useAnimatedSeries(counterfactualTarget);
+  const campColor =
+    regimeId === "dgs" ? "var(--dgs)" : regimeId === "ast" ? "var(--ast)" : "var(--ink-muted)";
 
   const fareY = useMemo(() => {
     const vals = s.fare.filter((v): v is number => v !== null);
@@ -227,12 +237,23 @@ export function RouteCharts({ route }: { route: Route }) {
           <>
             <span className={isLive ? "" : "readout-dim"}>{s.quarters[i]}</span>{" "}
             <strong>{s.fare[i] !== null ? `$${s.fare[i]!.toFixed(0)}` : "—"}</strong>
+            {counterfactualTarget[i] !== null && (
+              <span className="readout-shares">
+                without shared-owner effect: $
+                {counterfactualTarget[i]!.toFixed(0)}
+              </span>
+            )}
           </>
         }
         title={
           <>
             Average one-way fare{" "}
-            <span className="chart-sub">per passenger, this route (not inflation-adjusted)</span>
+            <span className="chart-sub">
+              <span style={{ color: "var(--fare)" }}>— what people paid</span>{" "}
+              <span style={{ color: campColor }}>
+                ┄ what your dials say it would cost with no shared-owner effect
+              </span>
+            </span>
           </>
         }
       >
@@ -246,6 +267,14 @@ export function RouteCharts({ route }: { route: Route }) {
               </text>
             </g>
           ))}
+        <path
+          d={seriesPath(cfAnim, x, fareY)}
+          fill="none"
+          stroke={campColor}
+          strokeWidth="1.7"
+          strokeDasharray="5 4"
+          style={{ transition: "stroke 300ms ease" }}
+        />
         <path d={seriesPath(fareAnim, x, fareY)} fill="none" stroke="var(--fare)" strokeWidth="2" />
         <EventLayer
           events={chartEvents}

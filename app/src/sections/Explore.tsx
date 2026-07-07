@@ -75,13 +75,14 @@ export function Explore() {
         <div className="section-kicker">② Explore real routes</div>
         <h2>Ten years of fares on routes you've actually flown</h2>
         <p className="section-lede">
-          Now the same two scoreboards, on real data. Every quarter since
-          2014: what a ticket cost between {shortCity(route.city1)} and{" "}
-          {shortCity(route.city2)}, who carried the passengers, and both
-          scores — <Term t="HHI" /> (market shares only, gray) and the
-          purple <Term t="MHHI delta" />, the extra points for shared owners.
-          The circles along the top are real events; hover them for the
-          story.
+          Here are the same two scoreboards, now computed on real government
+          data. For every quarter since 2014, you can see what a ticket cost
+          between {shortCity(route.city1)} and {shortCity(route.city2)}, who
+          carried the passengers, and both scores: the gray <Term t="HHI" />{" "}
+          line counts market shares only, while the purple{" "}
+          <Term t="MHHI delta" /> line adds the extra points for shared
+          owners. The circles along the top of each chart mark real events —
+          hover over them to read the story.
         </p>
         <DialsIntro />
         <RoutePicker />

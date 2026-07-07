@@ -110,49 +110,64 @@ export function DialsIntro() {
     <div className="dials-intro" id="dials-intro">
       <div className="dials-intro-header">
         The two disputed dials
-        <span> — the economists' fight, reduced to settings. Everything below obeys them.</span>
+        <span>
+          {" "}
+          — these two settings are the economists' entire fight. Every chart
+          and dollar figure below recalculates when you change them.
+        </span>
       </div>
       <div className="dial-cards">
         <div className="dial-card">
-          <div className="dial-num">Dial 1 · the measurement</div>
-          <h3>Whose stock-holdings count as influence?</h3>
+          <div className="dial-num">Dial 1 · how the score is measured</div>
+          <h3>Whose stock counts as influence?</h3>
           <p>
-            The purple line below is <strong>MHHI delta</strong> — the
-            "extra points for shared owners" score you just met in ① —
-            computed for real routes. But building it forces a choice:
-            whose holdings count as influence over an airline?{" "}
-            <strong style={{ color: "var(--ast)" }}>AST counted every big
-            shareholder</strong> — the bigger your stake, the more say you
-            have. <strong style={{ color: "var(--dgs)" }}>The critics
-            object</strong>: Vanguard, BlackRock &amp; State Street just
-            hold the stock for millions of savers — they don't tell airlines
-            how to compete — so their stakes shouldn't count at all.
+            <strong>What this dial changes:</strong> it changes how the
+            purple MHHI-delta line — the "extra points for shared owners"
+            score from ① — gets calculated on real routes. Specifically, it
+            decides <em>which investors' stakes are allowed to add
+            points</em>.
+          </p>
+          <p>
+            <strong style={{ color: "var(--ast)" }}>AST's setting counts
+            every big shareholder</strong>, on the logic that a big stake
+            always buys influence. <strong style={{ color: "var(--dgs)" }}>
+            The critics' setting doesn't count the Big Three</strong>{" "}
+            (Vanguard, BlackRock, and State Street), on the logic that they
+            merely hold stock for millions of savers and never tell airlines
+            how to compete.
           </p>
           <AssumptionToggle />
           <p className="dial-effect">
-            Flipping this recomputes a decade of history: the purple line, the
-            ownership web, and every prediction.
+            When you flip this, a decade of purple line, the ownership webs,
+            and every prediction on the page are recomputed under the other
+            side's rule.
           </p>
         </div>
         <div className="dial-card">
-          <div className="dial-num">Dial 2 · the damage</div>
-          <h3>If the score rises, how much do fares rise?</h3>
+          <div className="dial-num">Dial 2 · what the score costs you</div>
+          <h3>How strongly do points become dollars?</h3>
           <p>
-            Extra points on a scoreboard don't cost you money by themselves —
-            the question is how strongly those points translate into ticket
-            prices. Both camps measured exactly that, on the same government
-            data, and published different answers.{" "}
-            <strong style={{ color: "var(--ast)" }}>AST: noticeably</strong>{" "}
-            — enough to make fares 3–7% higher on the average route.{" "}
-            <strong style={{ color: "var(--dgs)" }}>The critics: not at
-            all</strong> — once measured their way, the effect is
-            indistinguishable from zero. Or drag your own multiplier
-            anywhere between.
+            <strong>What this dial changes:</strong> it sets the exchange
+            rate between score points and ticket prices. It doesn't touch
+            the purple line itself — it decides how much each point of MHHI
+            delta actually raises your fare.
+          </p>
+          <p>
+            Both camps measured this exchange rate on the same government
+            data and got different answers.{" "}
+            <strong style={{ color: "var(--ast)" }}>AST's measurement says
+            the effect is real</strong> — big enough to make fares 3–7%
+            higher on a typical route.{" "}
+            <strong style={{ color: "var(--dgs)" }}>The critics'
+            measurement says the effect is zero</strong> once the math is
+            done their way. You can also drag your own value anywhere in
+            between.
           </p>
           <RegimeToggle />
           <p className="dial-effect">
-            This sets the multiplier behind the dollar figure below and the
-            fare predictions in steps ③ and ④.
+            When you flip this, the dashed "fare without the shared-owner
+            effect" line on the chart below and every dollar figure in ③
+            and ④ are recomputed.
           </p>
         </div>
       </div>

@@ -145,13 +145,23 @@ export function Prediction() {
         </div>
 
         <p className="prereg-chip">
-          How you know we're not cheating: these predictions were locked into
-          this site's public code history on {prereg.frozen} — before any
-          post-shutdown fare data existed — in commit{" "}
-          <code>{prereg.commit.slice(0, 12)}</code> (a commit is a
-          tamper-evident snapshot; think of it as a notarized timestamp
-          anyone can inspect at <code>{prereg.path}</code>). When the real
-          numbers arrive, we can't quietly rewrite what we predicted.
+          How you know we're not cheating: these predictions were published
+          with a tamper-proof timestamp on {prereg.frozen}, before any
+          post-shutdown fare data existed. So when the real numbers arrive,
+          we can't quietly rewrite what we predicted — the original is
+          frozen in public, like a letter mailed to ourselves through a
+          notary.{" "}
+          <span className="prereg-tech">
+            (For the technically minded: the frozen record is{" "}
+            <a
+              href={`https://github.com/jasonsbrooks/common-skies/blob/${prereg.commit}/${prereg.path}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              here
+            </a>
+            .)
+          </span>
         </p>
       </div>
     </section>

@@ -9,10 +9,10 @@ export function Hero() {
 
         <div className="hero-standfirst">
           <p>
-            Start with something everyone knows: competition keeps prices
-            down. Ten airlines fighting over the same passengers means fare
-            sales and price wars. One airline with no rivals charges whatever
-            it likes — which is why monopolies are illegal.
+            Competition is what keeps prices down. When ten airlines fight
+            over the same passengers, you get fare sales and price wars.
+            When one airline has no rivals, it charges whatever it likes —
+            which is why monopolies are illegal.
           </p>
           <p>
             Now the stranger version. Suppose the airlines stay legally
@@ -54,7 +54,7 @@ export function Hero() {
 
         <div className="camp-cards">
           <div className="camp-card" style={{ "--camp": "var(--ast)" } as React.CSSProperties}>
-            <div className="camp-side">The claim · Azar, Schmalz &amp; Tecu, 2018</div>
+            <div className="camp-side">The claim · 2018</div>
             <h3>“Same owners, softer competition, higher fares.”</h3>
             <p>
               When one fund owns a chunk of every airline on a route, a price
@@ -67,12 +67,12 @@ export function Hero() {
               thickest.
             </p>
             <cite>
-              Journal of Finance, 2018 — the paper that started the fight.
-              (This site calls them “AST,” their initials.)
+              Azar, Schmalz &amp; Tecu — Journal of Finance, 2018. This site
+              calls them “AST,” their initials.
             </cite>
           </div>
           <div className="camp-card" style={{ "--camp": "var(--dgs)" } as React.CSSProperties}>
-            <div className="camp-side">The rebuttal · Dennis, Gerardi &amp; Schenone, 2022</div>
+            <div className="camp-side">The rebuttal · 2022</div>
             <h3>“Your measuring stick invented the effect.”</h3>
             <p>
               The score used to detect the problem isn't built from ownership
@@ -86,8 +86,8 @@ export function Hero() {
               fact about the world.
             </p>
             <cite>
-              Journal of Finance, 2022 — same journal, opposite verdict.
-              (This site calls them “the critics.”)
+              Dennis, Gerardi &amp; Schenone — Journal of Finance, 2022. This
+              site calls them “the critics.”
             </cite>
           </div>
         </div>

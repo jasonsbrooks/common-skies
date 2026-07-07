@@ -109,8 +109,18 @@ function SpiritScenario() {
     .sort((a, b) => shares[b]! - shares[a]!)
     .slice(0, 5);
 
+  // Dollar decomposition for the takeaway (same arithmetic as the receipt).
+  const concD = fare.v * (Math.exp(prediction.concentrationChannel) - 1);
+  const coD =
+    fare.v * Math.exp(prediction.concentrationChannel) * (Math.exp(prediction.commonOwnershipChannel) - 1);
+  const totalPct = (Math.exp(prediction.totalLogChange) - 1) * 100;
+
   return (
     <div>
+      <p className="scenario-note">
+        Pick one of the routes where Spirit actually flew, and we'll remove
+        it from the market and recompute everything:
+      </p>
       <div className="chips scenario-chips">
         {spiritRoutes.slice(0, 6).map((r) => (
           <button
@@ -164,6 +174,22 @@ function SpiritScenario() {
             />
           </div>
         </div>
+      </div>
+
+      <div className="takeaway">
+        <span className="takeaway-k">What you should take away</span>
+        Under your current dial settings, losing Spirit makes the average
+        ticket on this route about{" "}
+        <strong>${(concD + coD).toFixed(0)} more expensive</strong> (
+        {totalPct >= 0 ? "+" : ""}
+        {totalPct.toFixed(1)}%). Most of that — ${concD.toFixed(0)} — comes
+        from simply having one fewer competitor, which <em>both</em> camps
+        agree matters. The shared-ownership effect adds ${Math.abs(coD).toFixed(0)}
+        {coD >= 0 ? "" : " of savings"} on top, and that slice is what the
+        camps fight over. Try flipping Dial 2: the receipt's disputed line
+        stretches or collapses, while the competitor line barely moves. One
+        route can't settle a fight about the last few dollars — which is why
+        step ④ pools 52 routes at once.
       </div>
 
       <div className="wrinkle">
@@ -280,6 +306,33 @@ function DivestScenario() {
           </div>
         </div>
       </div>
+
+      <div className="takeaway">
+        <span className="takeaway-k">What you should take away</span>
+        {nothingToDo ? (
+          <>
+            Your Dial 1 setting already answers this scenario. If the Big
+            Three's stakes never influenced anyone — which is what "don't
+            count the Big Three" assumes — then making them sell changes
+            nothing, by definition. Flip Dial 1 back to "count every big
+            owner" to see what the other worldview predicts.
+          </>
+        ) : (
+          <>
+            This is the entire policy debate expressed as one number. If
+            AST's numbers are right, forcing the Big Three to sell their
+            airline stock would make the average ticket on this route about{" "}
+            <strong>
+              ${Math.abs(fare.v * (Math.exp(prediction.commonOwnershipChannel) - 1)).toFixed(0)}{" "}
+              cheaper
+            </strong>{" "}
+            ({((Math.exp(prediction.totalLogChange) - 1) * 100).toFixed(1)}%).
+            If the critics are right, it would change almost nothing. Laws
+            have been proposed on the strength of the first answer — and
+            opposed on the strength of the second.
+          </>
+        )}
+      </div>
     </div>
   );
 }
@@ -292,25 +345,30 @@ export function Simulate() {
         <div className="section-kicker">③ Run the experiment</div>
         <h2>On May 2, 2026, Spirit Airlines stopped flying</h2>
         <p className="section-lede">
-          A major low-cost carrier left hundreds of routes at once — the kind
-          of shock economists wait decades for. What should happen to fares?
-          Depends on your dials. Run it yourself, live, using the same math
-          the studies used.
+          A major low-cost airline left hundreds of routes at once, which is
+          the kind of shock economists usually wait decades for. What should
+          happen to fares? The answer depends on your dial settings — so run
+          the scenarios yourself, live, using the same math the studies
+          used.
         </p>
-        <div className="chips">
+        <div className="scenario-tabs" role="tablist">
           <button
-            className={`chip${scenario === "spirit" ? " active" : ""}`}
+            role="tab"
+            aria-selected={scenario === "spirit"}
+            className={`scenario-tab${scenario === "spirit" ? " active" : ""}`}
             onClick={() => setScenario("spirit")}
           >
-            The Spirit shutdown
-            <span className="chip-note">it actually happened — May 2, 2026</span>
+            <span className="tab-title">Scenario 1 · The Spirit shutdown</span>
+            <span className="tab-note">This one actually happened, on May 2, 2026.</span>
           </button>
           <button
-            className={`chip${scenario === "divest" ? " active" : ""}`}
+            role="tab"
+            aria-selected={scenario === "divest"}
+            className={`scenario-tab${scenario === "divest" ? " active" : ""}`}
             onClick={() => setScenario("divest")}
           >
-            The Big Three divest everything
-            <span className="chip-note">the thought experiment the fight is really about</span>
+            <span className="tab-title">Scenario 2 · The Big Three sell everything</span>
+            <span className="tab-note">This is the thought experiment the fight is really about.</span>
           </button>
         </div>
         {scenario === "spirit" ? <SpiritScenario /> : <DivestScenario />}
