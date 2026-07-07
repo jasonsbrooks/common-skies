@@ -33,21 +33,25 @@ export function Prediction() {
         <div className="section-kicker">④ The prediction</div>
         <h2>Reality grades this page in early 2027</h2>
         <p className="section-lede">
-          Scientists would never be allowed to shut down an airline just to
-          see what happens to prices — but reality just ran that experiment
-          for us. There's a trap, though: fuel prices spiked at the same
-          time, raising fares on <em>every</em> route, so simply comparing
-          before and after would mix the two stories together. The fix is a{" "}
-          <Term t="difference-in-differences" />: compare the routes Spirit
-          left against near-identical routes it never flew. The fuel spike
-          hits both groups equally — subtract one from the other and it
-          cancels out, leaving only Spirit's fingerprint.
+          No scientist would ever be allowed to shut down an airline just to
+          see what happens to ticket prices — but on May 2, 2026, reality
+          did it for us. There's a trap in reading the result, though: jet
+          fuel got expensive at the same time, which pushed fares up on{" "}
+          <em>every</em> route in America. A simple before-and-after would
+          mix the two stories together. So instead, we watch{" "}
+          <strong>two groups of routes</strong>: the routes where Spirit was
+          big, and a matching set of look-alike routes Spirit never flew.
+          The fuel spike hits both groups. Losing Spirit only hits the
+          first. So whatever <em>gap</em> opens up between the two groups
+          this year is Spirit's doing — economists call this trick a{" "}
+          <Term t="difference-in-differences" />.
         </p>
 
         <div className="did-design">
           <div className="did-fact">
-            <strong>{pairs.length} treatment routes</strong> — Spirit carried
-            ≥15% of passengers in 2026Q1, its last full quarter. E.g.{" "}
+            <strong>Group 1 · lost Spirit ({pairs.length} routes)</strong> —
+            routes where Spirit carried at least 15% of passengers in its
+            final full quarter. For example{" "}
             {pairs
               .slice(0, 3)
               .map((p) => p.treatmentCities.map(shortCity).join("–"))
@@ -55,8 +59,10 @@ export function Prediction() {
             …
           </div>
           <div className="did-fact">
-            <strong>{pairs.length} matched controls</strong> — same distance
-            bucket, closest traffic, zero Spirit for the trailing year. E.g.{" "}
+            <strong>Group 2 · the comparison ({pairs.length} routes)</strong>{" "}
+            — for each Group 1 route, a look-alike (similar distance,
+            similar traffic) that Spirit hadn't touched in a year. For
+            example{" "}
             {pairs
               .slice(0, 3)
               .map((p) => p.controlCities.map(shortCity).join("–"))
@@ -64,9 +70,9 @@ export function Prediction() {
             …
           </div>
           <div className="did-fact">
-            <strong>The registered number</strong> — how much more
-            treatment-route fares rise than control-route fares, Q3 2026 vs
-            the Q1 2026 baseline.
+            <strong>The bet on record</strong> — how much more Group 1's
+            fares rise than Group 2's, comparing the summer after the
+            shutdown (Q3 2026) against the start of the year (Q1 2026).
           </div>
         </div>
 
@@ -120,17 +126,18 @@ export function Prediction() {
         )}
 
         <p className="pred-referee">
-          <strong>What a result can settle — honestly:</strong> if fares land
-          near +3.2%, the critics' way of measuring looks right; near +4.5%,
-          AST's does. What one number <em>can't</em> do is tell the two
-          causes apart — "fewer rivals" and "shared owners" both push fares
-          the same direction here, so this experiment referees between the
-          two camps' full playbooks rather than isolating the mechanism.
-          (Why do shared owners <em>add</em> to the rise? Because
-          creditor-owned Spirit sat outside the ownership web — when it
-          vanished, passengers flowed toward the commonly-owned airlines.
-          That's the surprise from step ③.) And if the result lands far
-          outside the whole +3-to-+5 range, both camps' shared playbook is
+          <strong>What a result can settle — honestly:</strong> if the gap
+          lands near +3.2%, the critics' way of measuring looks right. If it
+          lands near +4.5%, AST's does. But one number can't tell the two
+          causes apart, because "one fewer competitor" and "more shared
+          ownership" both push fares up here. So treat this as a referee
+          choosing between the two camps' complete methods — not a final
+          verdict on <em>why</em> fares moved. (Why does shared ownership
+          add to the rise at all? Because Spirit's owners were its former
+          lenders, outside the web — so when Spirit vanished, its
+          passengers landed on airlines that <em>do</em> share owners.
+          That's the surprise from step ③.) And if the gap lands far
+          outside the +3-to-+5 range entirely, it means both camps are
           missing something big.
         </p>
 

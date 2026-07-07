@@ -182,14 +182,27 @@ function SpiritScenario() {
         ticket on this route about{" "}
         <strong>${(concD + coD).toFixed(0)} more expensive</strong> (
         {totalPct >= 0 ? "+" : ""}
-        {totalPct.toFixed(1)}%). Most of that — ${concD.toFixed(0)} — comes
-        from simply having one fewer competitor, which <em>both</em> camps
-        agree matters. The shared-ownership effect adds ${Math.abs(coD).toFixed(0)}
-        {coD >= 0 ? "" : " of savings"} on top, and that slice is what the
-        camps fight over. Try flipping Dial 2: the receipt's disputed line
-        stretches or collapses, while the competitor line barely moves. One
-        route can't settle a fight about the last few dollars — which is why
-        step ④ pools 52 routes at once.
+        {totalPct.toFixed(1)}%).{" "}
+        {concD >= Math.abs(coD) ? (
+          <>
+            The bigger part — ${concD.toFixed(0)} — comes from simply having
+            one fewer competitor, which <em>both</em> camps agree matters.
+            The shared-ownership effect adds ${Math.abs(coD).toFixed(0)}
+            {coD >= 0 ? "" : " of savings"} on top, and that smaller slice is
+            what the camps fight over.
+          </>
+        ) : (
+          <>
+            Surprisingly, the bigger part — ${Math.abs(coD).toFixed(0)} —
+            flows through <em>shared ownership</em>: Spirit's passengers
+            scatter onto airlines that do share big owners, so the disputed
+            score jumps. Having one fewer competitor adds the other $
+            {concD.toFixed(0)}, which <em>both</em> camps agree matters.
+          </>
+        )}{" "}
+        Try flipping Dial 2: the disputed line stretches or collapses, while
+        the competitor line barely moves. One route can't settle the fight —
+        which is why step ④ pools 52 routes at once.
       </div>
 
       <div className="wrinkle">
