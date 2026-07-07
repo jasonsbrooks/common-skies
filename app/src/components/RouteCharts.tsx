@@ -311,8 +311,11 @@ export function RouteCharts({ route }: { route: Route }) {
           <>
             Market concentration{" "}
             <span className="chart-sub">
-              <span style={{ color: "var(--hhi)" }}>— HHI (what regulators see)</span>{" "}
-              <span style={{ color: "var(--mhhi)" }}>— + MHHI delta (the disputed extra)</span>
+              <span style={{ color: "var(--hhi)" }}>— HHI (the base score)</span>{" "}
+              <span style={{ color: "var(--mhhi)" }}>
+                — MHHI delta (just the add-on for shared owners, not the
+                total — the lines can cross)
+              </span>
             </span>
           </>
         }
