@@ -2,7 +2,7 @@
 
 **One-liner:** An interactive site that teaches one of the biggest open fights in economics — "do index funds make your plane tickets more expensive?" — and lets you judge it yourself on a decade of real airline data, closing with a pre-registered, difference-in-differences prediction about the natural experiment that began May 2, 2026, when Spirit Airlines went out of business.
 
-**Assignment fit:** Theme 1 (Exploration & Understanding). One core interaction — *put the contested assumptions on the interface and let the user be the judge* — presented through three views. Fully self-contained: static site, bundled data, no keys, no backend, nothing external at demo time.
+**Project shape:** an exploration-and-understanding tool. One core interaction — *put the contested assumptions on the interface and let the user be the judge* — presented through three views. Fully self-contained: static site, bundled data, no keys, no backend, nothing external at demo time.
 
 ---
 
@@ -84,7 +84,7 @@ Offline Python/DuckDB script → one small parquet/JSON bundle: per-route-per-qu
 
 ## Why this wins
 
-No public interactive tool exists for the common-ownership fight; every explainer picks a side, and the refusal to pick one *is* the product. It hits all three Theme 1 clauses at once (simulation, explainer, dataset exploration). The natural experiment started nine weeks ago and the site displays the date reality will grade its predictions — with the fuel confound handled the way an economist would handle it. And the transcript trail shows exactly what the assignment grades: catching real errors (the Spirit ownership wrinkle, the fuel confound, the double-toggle distinction), verifying load-bearing facts, and cutting scope on purpose.
+No public interactive tool exists for the common-ownership fight; every explainer picks a side, and the refusal to pick one *is* the product. It is a simulation, an explainer, and a dataset explorer at once. The natural experiment started nine weeks ago and the site displays the date reality will grade its predictions — with the fuel confound handled the way an economist would handle it. And the build history shows the work that matters: catching real errors (the Spirit ownership wrinkle, the fuel confound, the double-toggle distinction), verifying load-bearing facts, and cutting scope on purpose.
 
 ## With more time (rationale doc)
 

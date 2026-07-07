@@ -2,13 +2,13 @@
 
 ## Context
 
-Building **Common Skies** (name TBD): an interactive static site teaching the common-ownership fight in airline economics — "do index funds make plane tickets more expensive?" — per the brief at `~/Downloads/common-skies-brief-v2.md`. Target: Anthropic SWE take-home, Theme 1 (Exploration & Understanding). Deliverables: deployed prototype, GitHub repo, ~5min video + written rationale, AI transcripts.
+Building **Common Skies** (name TBD): an interactive static site teaching the common-ownership fight in airline economics — "do index funds make plane tickets more expensive?" — per the project brief (docs/plans/00-brief.md). Deliverables: deployed prototype, GitHub repo, ~5min video + written rationale.
 
 The core product idea: the disputed joints of the AST-vs-critics literature become UI toggles — the user flips assumptions and watches the answer change. Closer: a pre-registered difference-in-differences prediction about Spirit Airlines' May 2, 2026 shutdown.
 
 **Working style (Jason's ground rules):**
 - Small concrete chunks as a **Sapling stack** (`sl commit` / `sl amend` / `sl absorb`), local only — **no push to GitHub until Jason says so**; PRs happen at the end.
-- This high-level plan first, then a **subplan per phase** before implementing it (subplans live in-repo at `docs/plans/` — they're part of the judgment trail graders want).
+- This high-level plan first, then a **subplan per phase** before implementing it (subplans live in-repo at `docs/plans/` — they document how the project evolved).
 - Brainstorm openly; ask rather than assume on genuinely open questions.
 
 **Decisions locked with Jason (2026-07-05):**
@@ -22,7 +22,7 @@ The core product idea: the disputed joints of the AST-vs-critics literature beco
   - *Fare receipt:* Simulate's prediction rendered as an itemized airline-style receipt — base fare, concentration line, and a "common-ownership premium — disputed" line item that grows/collapses with the regime toggle.
   - Camp color-theming throughout; toggle flips animate (series morph, not snap) since both variants are precomputed. Plain-English translation sentence under the toggles is a stretch nice-to-have, not committed.
 
-**Budget tension to manage:** the brief's honest estimate is 8–9h; the assignment's hard cap is 8h. The pre-committed cut order absorbs the overage. Track time per phase.
+**Budget tension to manage:** the brief's honest estimate is 8–9h against a hard cap of 8h. The pre-committed cut order absorbs the overage. Track time per phase.
 
 ## Environment facts
 
