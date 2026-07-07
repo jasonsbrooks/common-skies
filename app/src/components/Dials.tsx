@@ -104,6 +104,24 @@ function RegimeToggle() {
 
 /** The full, explained introduction of the dials — lives inside Explore,
  * before any chart. The sticky bar appears only after this scrolls away. */
+/** The dial settings turned into a sentence about the selected route.
+ * Rendered with the OUTPUTS (under the fare chart, whose dashed line it
+ * verbalizes) — not with the dials themselves. */
+export function TranslationSentence() {
+  const t = useTranslation();
+  if (!t) return null;
+  return (
+    <p className="translation">
+      With today's settings: common ownership is baked into about{" "}
+      <strong>${t.premium.toFixed(0)}</strong> of the average{" "}
+      <strong>${t.fare.toFixed(0)}</strong> ticket on {t.route} ({t.quarter},
+      under {t.regimeName}
+      {t.passive ? ", Big Three passive" : ""}) — that's the gap between the
+      two lines above. Flip the dials and watch it move.
+    </p>
+  );
+}
+
 /** Converts the active coefficient into concrete dollars, so the slider's
  * abstract number always has a plain-English meaning. */
 function Dial2ScaleNote() {
@@ -122,7 +140,6 @@ function Dial2ScaleNote() {
 }
 
 export function DialsIntro() {
-  const t = useTranslation();
   return (
     <div className="dials-intro" id="dials-intro">
       <div className="dials-intro-header">
@@ -189,23 +206,13 @@ export function DialsIntro() {
           </p>
         </div>
       </div>
-      {t && (
-        <p className="translation">
-          With today's settings: common ownership is baked into about{" "}
-          <strong>${t.premium.toFixed(0)}</strong> of the average{" "}
-          <strong>${t.fare.toFixed(0)}</strong> ticket on {t.route} ({t.quarter},
-          under {t.regimeName}
-          {t.passive ? ", Big Three passive" : ""}). Flip the dials and watch
-          this number.
-        </p>
-      )}
     </div>
   );
 }
 
-/** Condensed sticky bar — appears only after DialsIntro scrolls out. */
+/** Condensed sticky bar — appears only after DialsIntro scrolls out.
+ * Inputs only; the consequences live with the outputs below. */
 export function StickyDials({ visible }: { visible: boolean }) {
-  const t = useTranslation();
   if (!visible) return null;
   return (
     <div className="controlbar">
@@ -218,13 +225,6 @@ export function StickyDials({ visible }: { visible: boolean }) {
           <div className="dial-label">Dial 2 · effect on fares</div>
           <RegimeToggle />
         </div>
-        {t && (
-          <p className="translation compact">
-            ≈ <strong>${t.premium.toFixed(0)}</strong> of the{" "}
-            <strong>${t.fare.toFixed(0)}</strong> avg. ticket on {t.route} is
-            common ownership, with these settings.
-          </p>
-        )}
       </div>
     </div>
   );

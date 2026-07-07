@@ -489,10 +489,11 @@ button {
   font-variant-numeric: tabular-nums;
 }
 
-.translation.compact {
-  font-size: 14px;
-  max-width: 34ch;
-  margin-top: 0;
+/* When the sentence sits between the charts, tuck it toward the fare
+   chart whose dashed line it verbalizes. */
+.charts .translation {
+  margin: -8px 6px 0;
+  max-width: none;
 }
 
 @media (max-width: 820px) {

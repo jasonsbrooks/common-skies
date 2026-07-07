@@ -4,6 +4,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import type { BundleEvent, Route } from "../lib/bundle";
 import { useAnimatedSeries } from "../lib/useAnimatedSeries";
 import { useAppState } from "../state";
+import { TranslationSentence } from "./Dials";
 
 const W = 640;
 const FARE_H = 190;
@@ -302,6 +303,8 @@ export function RouteCharts({ route }: { route: Route }) {
         <Crosshair idx={hoverIdx} x={x} h={FARE_H} />
         <XAxis quarters={s.quarters} x={x} h={FARE_H} />
       </ChartFrame>
+
+      <TranslationSentence />
 
       <ChartFrame
         h={CONC_H}
