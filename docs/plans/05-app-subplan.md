@@ -12,7 +12,7 @@
 
 ## Design decisions (proposed)
 
-- **Charts are hand-rolled SVG React components** with only `d3-scale` + `d3-shape` as helpers (~10KB). Rationale: event annotations, the toggle morph animation, and the ownership web all need pixel-level control a chart lib fights us on; for this assignment, chart craft is part of the demo. Series morphs use a small `useAnimatedSeries` hook (rAF lerp between the two precomputed series — both have identical quarter grids, so interpolation is index-wise and trivial).
+- **Charts are hand-rolled SVG React components** with only `d3-scale` + `d3-shape` as helpers (~10KB). Rationale: event annotations, the toggle morph animation, and the ownership web all need pixel-level control a chart lib fights us on; for this project, chart craft is part of the demo. Series morphs use a small `useAnimatedSeries` hook (rAF lerp between the two precomputed series — both have identical quarter grids, so interpolation is index-wise and trivial).
 - **Single-page scroll with a sticky story rail.** Sections: Hero → ① Learn → ② Explore → ③ Simulate → ④ The Prediction, with `#anchors` for deep links and the rail highlighting the active section. Matches the "first 3 minutes" narrative; no router needed.
 - **Global toggle state in one React context**: `{assumption, regimeId, customCoef, selectedRouteId}`. The two toggles render in a sticky control bar that appears once the user scrolls past Learn (they apply to Explore + Simulate + Prediction). Camp theming: AST = coral, DGS/critics = teal, applied to the regime toggle, series accents, and the receipt's disputed line.
 - **Bundle loads via `fetch('bundle.json')`** at app start (330KB, gzips to ~travel-size); a skeleton state until loaded.
