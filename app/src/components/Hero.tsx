@@ -57,14 +57,16 @@ export function Hero() {
             <div className="camp-side">The claim · 2018</div>
             <h3>“Same owners, softer competition, higher fares.”</h3>
             <p>
-              When one fund owns a chunk of every airline on a route, a price
-              war stops making sense <em>for the owners</em>: whatever
-              American wins, the same shareholders lose through their Delta
-              and United stakes. No conspiracy required — the incentive
-              arrives through boards, executive pay, and whose votes elect
-              management. Comparing thousands of routes over fourteen years,
-              they found fares 3–7% higher where this shared ownership ran
-              thickest.
+              Suppose one fund owns 20% of American <em>and</em> 20% of
+              Delta. If American starts a price war, it steals passengers
+              from Delta — but the same fund's Delta shares lose value at
+              the same time. Seen from the owners' chairs, the war has no
+              winner: peace and high fares pay better. And nobody needs to
+              say any of this out loud, because executives are hired, paid,
+              and re-elected by their biggest shareholders — and they know
+              exactly who those are. Measuring thousands of routes over
+              fourteen years, AST found fares 3–7% higher where this
+              owner-overlap ran thickest.
             </p>
             <cite>
               Azar, Schmalz &amp; Tecu — Journal of Finance, 2018. This site
@@ -75,15 +77,17 @@ export function Hero() {
             <div className="camp-side">The rebuttal · 2022</div>
             <h3>“Your measuring stick invented the effect.”</h3>
             <p>
-              The score used to detect the problem isn't built from ownership
-              alone — it's ownership <em>multiplied by market shares</em>,
-              and market shares move with prices for ordinary reasons that
-              have nothing to do with who owns whom. Their test: feed the
-              formula <em>fake</em> ownership data but real market shares,
-              and the "effect" is still there. Use <em>real</em> ownership
-              but neutralize the market shares, and it vanishes. Conclusion:
-              the discovery was an artifact of how it was measured, not a
-              fact about the world.
+              The critics don't defend the funds — they attack the ruler
+              used to measure them. The overlap score is built from two
+              ingredients mixed together: who owns the airlines, and how big
+              each airline is on the route. The problem is that airline
+              sizes move together with fares all on their own, so the score
+              can "predict" prices even if ownership does nothing at all.
+              Their test: swap the real owners for <em>made-up</em> ones and
+              keep everything else — the "effect" survives. Keep the real
+              owners and neutralize the size ingredient — the effect
+              vanishes. If fake data works as well as real data, the
+              discovery was in the recipe, not in the world.
             </p>
             <cite>
               Dennis, Gerardi &amp; Schenone — Journal of Finance, 2022. This

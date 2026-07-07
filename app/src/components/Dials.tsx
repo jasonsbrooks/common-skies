@@ -104,6 +104,23 @@ function RegimeToggle() {
 
 /** The full, explained introduction of the dials — lives inside Explore,
  * before any chart. The sticky bar appears only after this scrolls away. */
+/** Converts the active coefficient into concrete dollars, so the slider's
+ * abstract number always has a plain-English meaning. */
+function Dial2ScaleNote() {
+  const { activeCoef } = useAppState();
+  const pctPer1000 = (Math.exp(activeCoef * 0.1) - 1) * 100;
+  const dollarsOn200 = 200 * (Math.exp(activeCoef * 0.1) - 1);
+  return (
+    <p className="dial-scale-note">
+      What the number means: at the current setting ({activeCoef.toFixed(3)}),
+      every extra <strong>1,000 points</strong> of MHHI delta makes fares
+      about <strong>{pctPer1000.toFixed(1)}% higher</strong> — roughly{" "}
+      <strong>${dollarsOn200.toFixed(2)}</strong> added to a $200 ticket.
+      Slide it to zero and the points cost nothing at all.
+    </p>
+  );
+}
+
 export function DialsIntro() {
   const t = useTranslation();
   return (
@@ -164,6 +181,7 @@ export function DialsIntro() {
             between.
           </p>
           <RegimeToggle />
+          <Dial2ScaleNote />
           <p className="dial-effect">
             When you flip this, the dashed "fare without the shared-owner
             effect" line on the chart below and every dollar figure in ③
