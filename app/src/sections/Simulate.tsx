@@ -195,8 +195,8 @@ function SpiritScenario() {
       <div className="wrinkle">
         <strong>The wrinkle that makes this honest:</strong> by the time it
         shut down, Spirit didn't belong to the index funds anymore —
-        bankruptcy had handed it to its lenders (hedge funds like Citadel and
-        PIMCO). That changes the math. If Spirit had still been owned the
+        bankruptcy had handed it to its lenders (investment firms like
+        Citadel and PIMCO). That changes the math. If Spirit had still been owned the
         ordinary way — its <em>2022</em> register: Vanguard 9%, BlackRock
         7.5% — its exit would have <em>removed</em> wires from the web and
         moved the shared-ownership score (MHHI delta) by{" "}
@@ -327,9 +327,10 @@ function DivestScenario() {
               cheaper
             </strong>{" "}
             ({((Math.exp(prediction.totalLogChange) - 1) * 100).toFixed(1)}%).
-            If the critics are right, it would change almost nothing. Laws
-            have been proposed on the strength of the first answer — and
-            opposed on the strength of the second.
+            If the critics are right, it would change almost nothing. Serious
+            policy proposals — such as capping how much of competing
+            companies the big funds may own — rest on the first answer, and
+            the case against them rests on the second.
           </>
         )}
       </div>

@@ -5,7 +5,7 @@
       "quarter": "2016Q4",
       "date": "2016-11-14",
       "label": "Berkshire buys into all four majors",
-      "detail": "Warren Buffett's Berkshire Hathaway reveals big new stakes in American, Delta, United, AND Southwest \u2014 all four at once. A famous stock-picker joins the everyone-owns-everyone club, and the purple line feels it.",
+      "detail": "Warren Buffett's Berkshire Hathaway discloses big new stakes in American, Delta, and United \u2014 and Buffett says on TV that he's buying Southwest too. A famous stock-picker joins the everyone-owns-everyone club, and the purple line feels it.",
       "source": "Berkshire Hathaway 13F, 2016Q3/Q4"
     },
     {
@@ -59,9 +59,9 @@
     {
       "id": "spirit-emergence",
       "quarter": "2025Q1",
-      "date": "2025-03-12",
+      "date": "2025-03-13",
       "label": "Spirit emerges \u2014 creditors own it now",
-      "detail": "Spirit exits bankruptcy under new management \u2014 its old shareholders, index funds included, are wiped out, and the lenders (hedge funds like Citadel and PIMCO) become the owners. Spirit leaves the ownership web while its planes keep flying. The index funds had already lost this one.",
+      "detail": "Spirit exits bankruptcy under new ownership \u2014 its old shareholders, index funds included, are wiped out, and the lenders (investment firms like Citadel and PIMCO) become the owners. Spirit leaves the ownership web while its planes keep flying. The index funds had already lost this one.",
       "source": "Spirit 8-K exhibits, Mar 2025; SC 13Gs May\u2013Aug 2025"
     },
     {
@@ -88,7 +88,7 @@
       "date": "2026-05-02",
       "beyond_series": true,
       "label": "Spirit Airlines ceases operations",
-      "detail": "The natural experiment begins: a major low-cost carrier exits ~200 routes at once. Concentration jumps; the common-ownership term barely moves (Spirit was creditor-owned). The registered prediction starts its clock.",
+      "detail": "The natural experiment begins: a major low-cost carrier exits its entire network at once. Concentration jumps; the common-ownership term barely moves (Spirit was creditor-owned). The registered prediction starts its clock.",
       "source": "Spirit Aviation Holdings, May 2, 2026"
     },
     {
@@ -97,7 +97,7 @@
       "date": "2026-05-15",
       "beyond_series": true,
       "label": "Buffett returns: Berkshire takes 6.1% of Delta",
-      "detail": "Two weeks after Spirit's shutdown, Berkshire discloses a $2.6B Delta stake \u2014 the cross-holding web starts rewiring itself before the experiment even reports.",
+      "detail": "Berkshire's filing reveals a $2.6B Delta stake \u2014 6.1% of the airline, bought during the first quarter of 2026. The ownership web had begun rewiring itself even before the experiment could report.",
       "source": "Berkshire SC 13G on DAL, May 2026; CNBC 2026-05-15"
     }
   ]

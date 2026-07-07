@@ -10,7 +10,7 @@ export const GLOSSARY: Record<string, string> = {
   "market share":
     "A company's percent of the market. If half the people flying Chicago–Miami fly American, American's market share on that route is 50%.",
   HHI:
-    "The official 0–10,000 score for how concentrated a market is. Recipe: take each company's percent of the market, square it, add them up. One monopolist: 100² = 10,000. Two equal rivals: 50² + 50² = 5,000. Regulators start worrying above ~2,500. It counts market shares only — it can't see who owns the companies.",
+    "The official 0–10,000 score for how concentrated a market is. Recipe: take each company's percent of the market, square it, add them up. One monopolist: 100² = 10,000. Two equal rivals: 50² + 50² = 5,000. Under the current (2023) merger guidelines, anything above 1,800 is 'highly concentrated' (the old threshold was 2,500). It counts market shares only — it can't see who owns the companies.",
   "MHHI delta":
     "The extra points added to HHI when competitors share owners. Zero if every company has separate owners; big if the same funds own everyone. Same 0–10,000 scale as HHI. Whether these points are real — whether shared ownership actually softens competition — is what this whole fight is about.",
   coefficient:
