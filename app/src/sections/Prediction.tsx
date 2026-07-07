@@ -6,7 +6,7 @@ import prereg from "../prereg-commit.json";
 const TIMELINE = [
   { date: "Apr 2026", label: "Jet-fuel spike", note: "raises fares everywhere — the confound" },
   { date: "May 2, 2026", label: "Spirit stops flying", note: "the experiment begins" },
-  { date: "May 15, 2026", label: "Buffett returns", note: "Berkshire takes 6.1% of Delta" },
+  { date: "May 15, 2026", label: "Buffett's return revealed", note: "a filing shows Berkshire bought 6.1% of Delta in Q1 — before the shutdown" },
   { date: "~Oct 2026", label: "First post-shutdown data", note: "DB1C monthly, ~4-month lag" },
   { date: "~Q1 2027", label: "The verdict", note: "full Q3 2026 fares publish; this page gets graded" },
 ];

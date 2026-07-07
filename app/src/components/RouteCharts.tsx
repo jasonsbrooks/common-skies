@@ -342,13 +342,13 @@ export function RouteCharts({ route }: { route: Route }) {
         <line
           x1={M.left}
           x2={W - M.right}
-          y1={concY(2500)}
-          y2={concY(2500)}
+          y1={concY(1800)}
+          y2={concY(1800)}
           stroke="var(--ink-faint)"
           strokeDasharray="5 4"
         />
-        <text x={W - M.right} y={concY(2500) - 5} className="tick" textAnchor="end">
-          regulators flag mergers above 2,500
+        <text x={W - M.right} y={concY(1800) - 5} className="tick" textAnchor="end">
+          regulators call 1,800+ “highly concentrated”
         </text>
         <path d={seriesPath(hhiAnim, x, concY)} fill="none" stroke="var(--hhi)" strokeWidth="1.8" />
         <path

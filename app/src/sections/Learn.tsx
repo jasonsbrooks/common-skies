@@ -14,7 +14,7 @@ const FOUNDER_STAKE = 0.2;
 
 const SCALE_MARKS = [
   { at: 1000, label: "ten equal rivals", detail: "10 airlines × 10% each", side: "up" },
-  { at: 2500, label: "regulators worry", detail: "merger-review territory", side: "down" },
+  { at: 1800, label: "regulators worry", detail: "the merger-review line", side: "down" },
   { at: 5000, label: "two equal rivals", detail: "2 airlines × 50% each", side: "up" },
   { at: 10000, label: "monopoly", detail: "one airline, all passengers", side: "down" },
 ] as const;
@@ -79,10 +79,12 @@ function HhiPlayground() {
     score >= 9000
       ? "That is basically a monopoly."
       : score >= 5000
-        ? "Regulators would call this highly concentrated."
-        : score >= 2500
-          ? "This is concentrated enough that regulators would block most mergers here."
-          : "This market looks competitive — lots of real rivals.";
+        ? "Extremely concentrated — one or two players hold nearly everything."
+        : score >= 1800
+          ? "Regulators officially call this 'highly concentrated' — most mergers here would be challenged."
+          : score >= 1000
+            ? "Moderately concentrated, in regulators' terms."
+            : "This market looks genuinely competitive.";
 
   return (
     <div className="playground">

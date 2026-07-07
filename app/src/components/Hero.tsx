@@ -12,7 +12,8 @@ export function Hero() {
             Competition is what keeps prices down. When ten airlines fight
             over the same passengers, you get fare sales and price wars.
             When one airline has no rivals, it charges whatever it likes —
-            which is why monopolies are illegal.
+            which is why antitrust laws exist to stop markets from ending up
+            that way.
           </p>
           <p>
             Now the stranger version. Suppose the airlines stay legally
@@ -27,8 +28,8 @@ export function Hero() {
             <Term t="index fund">index funds</Term>. An index fund doesn't
             try to pick winning stocks — it automatically buys a small slice
             of <em>every</em> big company. That turned out to be a cheap,
-            sensible way to invest, and it's where most retirement money
-            (your 401(k), probably) now sits. Three firms — Vanguard,
+            sensible way to invest, and a huge share of retirement money
+            (your 401(k), probably) now sits in them. Three firms — Vanguard,
             BlackRock, and State Street — manage most of it. And if your
             strategy is "buy everything," you end up owning everything:
             together, those three hold roughly 15–25% of nearly every major
@@ -46,8 +47,7 @@ export function Hero() {
             everything you buy. Another team answered: measure it properly
             and the effect <strong>disappears</strong>.{" "}
             <span className="subtle">
-              Eight years, four rebuttals, and one <em>Journal of Finance</em>{" "}
-              fight later, nobody has won.
+              Eight years and a volley of rebuttals later, nobody has won.
             </span>
           </p>
         </div>
