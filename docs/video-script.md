@@ -1,47 +1,41 @@
 # Video Script — Common Skies (~5 minutes)
 
-Format: screen recording of the live site with voiceover. Directions in
-brackets; spoken lines in plain text. Target pace ~150 wpm; the spoken
-text below is ~770 words.
+This is the design rationale in spoken form — the same ground as
+docs/rationale.md, not a product demo. Suggested format: screen recording
+with the site visible as a backdrop, moving to the part of the page being
+discussed. Directions in brackets are light cues, not a tour. The spoken
+text is ~760 words, which is about five minutes at a natural pace.
 
 ---
 
-**[0:00 — Site hero on screen, scrolled to the headline]**
+**[0:00 — Site hero visible]**
 
-Do index funds make your plane tickets more expensive? That question is one of the biggest open fights in economics, and this is Common Skies — an interactive site that doesn't try to win the fight. It hands you the levers the economists have been fighting over, on a decade of real government data, and lets you judge it yourself.
+Hi, I'm Jason, and this is Common Skies. I want to spend these five minutes not demoing the site — you have the link for that — but explaining why I built this particular thing and the decisions behind it.
 
-Here's the setup in thirty seconds. Competition keeps prices down. But three investment firms — Vanguard, BlackRock, and State Street — run the index funds most retirement money sits in, and buying a slice of everything means they ended up owning fifteen to twenty-five percent of nearly every major U.S. airline, all at the same time. In 2018, a team of economists said: that overlap quietly softens competition, and fares are three to seven percent higher because of it. In 2022, another team said: measure it properly and the effect disappears. Both papers are in the same top journal. Nobody has won.
+I chose the Exploration and Understanding theme because it rewards what I've spent my career doing: taking a system that's too complicated to explain in words alone and making it understandable through interaction. The subject is a real fight in economics that's still going on. A handful of giant investment firms — the ones that manage most of our retirement savings — have ended up owning a piece of every major U.S. airline at the same time. In 2018, a team of economists said that overlap softens competition and makes plane tickets three to seven percent more expensive. In 2022, another team said the effect is zero, and the first team had measured wrong. Same top journal, eight years of back and forth, and still no winner.
 
-**[0:45 — Scroll to ① Learn; drag the playground sliders, add an airline]**
+**[0:55]**
 
-Before you can judge that fight, you need the scoreboard. Regulators score market concentration with a number called HHI — you take each company's share of the market, square it, add it up. This playground lets you feel it: drag an airline bigger and the score climbs toward monopoly; add rivals and it falls.
+The topic is personal for me. I follow aviation closely, and I ran into this fight years ago. I understood the headline, but the machinery underneath it was a wall of math I never worked through, and I never found an explanation that made it visual. That's exactly the premise of this theme — a hard idea that static explanations failed to teach me. So this project is the explainer I wish had existed.
 
-**[1:15 — FundCo toy: drag both stakes up, point at the two score cards]**
+But I didn't pick it on sentiment. My transcripts show a deliberately adversarial selection: I generated about a dozen candidate ideas and killed them one by one against the same filter — real data instead of made-up data, interaction that changes the assumptions instead of just the camera angle, nothing for a reviewer to install or sign into, and a payoff that doesn't depend on luck. This idea came in late, as my own candidate rather than the AI's top pick, and it beat the front-runner. It won for four reasons: the fight is genuinely unresolved, the math at its center is teachable with a slider in a minute, all the data is public and small, and — the gift — Spirit Airlines went out of business nine weeks before I started building, which means the tool can make predictions that reality will actually grade.
 
-But watch the blind spot. Here are two airlines splitting a route fifty-fifty. Now a fund buys stock in both of them. The official score doesn't move — no merger happened. The extended score, MHHI, climbs toward merger territory, because each airline's biggest shareholders now win either way. That gap is called MHHI delta, and the entire fight is about whether that number is real money.
+**[2:00 — Scroll slowly to the two dials]**
 
-**[1:45 — The two dials card]**
+Here's the non-obvious part. Every existing explainer of this debate picks a side. This one refuses to, and that refusal is the design: the contested assumptions became the interface. The fight sounds like one disagreement, but it's really two, so the site gives you two dials — one for whether the big index funds count as influencing the airlines they own at all, and one for how strongly that influence shows up in ticket prices. You flip whose economics you believe and watch the same decade of data, and the same scenarios, change their answer.
 
-The fight comes down to two dials, and this is the design thesis of the whole site: the disputed assumptions ARE the interface. Dial one — whose stock-holdings count as influence? The 2018 team counted every big owner. The critics say the Big Three are passive and shouldn't count at all. Dial two — how strongly do points become dollars? The 2018 estimate says every thousand points is about two percent on your fare. The critics' estimate says essentially zero.
+Building it honestly produced my favorite discovery. By the time Spirit shut down, it didn't even belong to the index funds anymore — bankruptcy had handed it to its lenders a year earlier. Run the math with its old owners, and Spirit's exit would have loosened the web of shared ownership. With its real owners, the exit tightens it. Same event, opposite directions, hinging on bankruptcy paperwork. Most coverage would have gotten that wrong, and the app teaches it instead.
 
-**[2:15 — Explore: Atlanta–Chicago, flip Dial 1, point at the purple cliff at 2020]**
+**[3:10 — The prediction section visible]**
 
-Now the real data. Fifty routes, every quarter since 2014, with the news drawn on the charts. Here's Atlanta to Chicago — and look at this cliff in 2020. That's Warren Buffett. Berkshire held about ten percent of all four major airlines, sold everything in one month, and under the critics' dial setting, shared ownership on this route essentially died that day. The dashed line on the fare chart is your dials talking: what tickets would cost with no shared-owner effect at all. Flip a dial and a decade of history recalculates.
+The site ends with a bet: four predictions, one per dial combination, about the routes Spirit left behind versus look-alike routes it never flew — built that way so this spring's fuel-price spike cancels out. They were published with a tamper-proof timestamp before any post-shutdown data existed, and reality grades them in early 2027. Because the tool never picked a side, any outcome vindicates one of its settings.
 
-**[3:00 — Simulate: Spirit shutdown, the receipt; flip Dial 2 back and forth]**
+**[3:40]**
 
-Then reality handed us an experiment. On May 2, 2026, Spirit Airlines stopped flying — hundreds of routes lost a competitor overnight. This receipt itemizes the predicted fare change on a route Spirit just left, and the disputed line is the whole fight in one row: under the 2018 numbers it's eight dollars; flip to the critics and it nearly vanishes.
+A few decisions worth naming. All the heavy math happens before the site ever loads, which is why the dials feel instant and the demo needs no servers or accounts. The math is written twice on purpose — once in the site, once in the data build — and an automated test forces the two to agree before anything ships. The ownership table was built by hand from official filings, with a source attached to every number. And midway through, readability became a rule, not a preference: after watching a first-time reader get lost, we rewrote every sentence to survive someone with no background in finance — and that same pass fact-checked the whole site and caught real errors, including a regulatory threshold that had been out of date since 2023.
 
-And there's a wrinkle most coverage would miss: by the shutdown, Spirit didn't even belong to the index funds anymore — bankruptcy had handed it to its lenders. Run the math with its old owners and its exit would have loosened the ownership web. With its real owners, the exit tightens it. Same event, opposite directions, hinging on bankruptcy paperwork.
+**[4:35]**
 
-**[3:50 — Prediction: the two groups, the 2×2 grid, the timestamp chip]**
+With more time, I'd build the mode the design already points at: when the post-shutdown fare data publishes, the site ingests it and grades its own frozen predictions. I spent about seven hours over two days, four to five of them hands-on, with the rest running autonomously against plans we'd agreed. The transcripts show the part I care most about: not just what we built, but what we caught. Thanks for watching.
 
-So the site ends with a bet. Fuel prices spiked at the same time Spirit died, so we compare two groups: fifty-two routes that lost Spirit, and fifty-two look-alikes that never had it. The fuel spike hits both; losing Spirit hits only one. Four predictions — one per dial combination — were frozen with a public, tamper-proof timestamp before any post-shutdown data existed. Reality grades this page in early 2027, and because the site never picked a side, any outcome vindicates one of its settings.
-
-**[4:30 — Fine print briefly, then back to hero]**
-
-Everything is built honestly underneath: the math is implemented twice and tested to agree to twelve decimal places, every ownership number carries the SEC filing it came from, and the fine print steelmans both camps and lists every simplification we made on purpose.
-
-I spent about seven hours across two days building this with Claude — the transcripts show the parts I'm proudest of, which are the errors we caught, not just the features we shipped. Thanks for watching — the dials are yours now.
-
-**[4:55 — End on the hero headline]**
+**[4:55 — End]**
