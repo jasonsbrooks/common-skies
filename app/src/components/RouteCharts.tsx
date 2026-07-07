@@ -149,10 +149,19 @@ function EventLayer({
           <line x1={x(i)} x2={x(i)} y1={M.top - 4} y2={h - M.bottom} stroke="var(--hairline-strong)" strokeDasharray="2 4" />
           {/* generous invisible hit target */}
           <circle cx={x(i)} cy={M.top - 10} r="12" fill="transparent" />
-          <circle cx={x(i)} cy={M.top - 10} r="4.5" fill="var(--paper)" stroke="var(--ink-muted)" strokeWidth="1.3" />
+          <circle
+            cx={x(i)}
+            cy={M.top - 10}
+            r={evs.length > 1 ? 7 : 4.5}
+            fill="var(--paper)"
+            stroke="var(--ink-muted)"
+            strokeWidth="1.3"
+          />
           {evs.length > 1 && (
-            <text x={x(i)} y={M.top - 6.6} className="event-count" textAnchor="middle">
-              {evs.length}
+            // "×2" = two events share this quarter (COVID + the Buffett
+            // exit both landed in 2020Q2); a bare numeral read as a label.
+            <text x={x(i)} y={M.top - 7.4} className="event-count" textAnchor="middle">
+              ×{evs.length}
             </text>
           )}
         </g>
