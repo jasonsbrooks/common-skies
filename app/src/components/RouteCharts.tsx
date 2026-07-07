@@ -184,11 +184,18 @@ export function RouteCharts({ route }: { route: Route }) {
   const mhhiTarget = assumption === "proportional" ? s.mhhiDeltaAst : s.mhhiDeltaPassive;
   // What the fare would be with the shared-owner effect switched off,
   // under the reader's current dials. Both dials visibly move this line.
-  const counterfactualTarget = s.fare.map((f, idx) => {
-    const m = mhhiTarget[idx];
-    if (f === null || m === null || m === undefined) return null;
-    return f * Math.exp(-activeCoef * (m / 10000));
-  });
+  // Memoized: useAnimatedSeries keys its animation on array identity, so a
+  // fresh array every render restarts the lerp forever and the line
+  // freezes on stale values (it was drawing the previous route's fares).
+  const counterfactualTarget = useMemo(
+    () =>
+      s.fare.map((f, idx) => {
+        const m = mhhiTarget[idx];
+        if (f === null || m === null || m === undefined) return null;
+        return f * Math.exp(-activeCoef * (m / 10000));
+      }),
+    [s.fare, mhhiTarget, activeCoef],
+  );
   // Animated: toggle flips deflate/inflate the lines; route changes glide.
   const mhhi = useAnimatedSeries(mhhiTarget);
   const hhiAnim = useAnimatedSeries(s.hhi);
