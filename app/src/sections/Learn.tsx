@@ -14,7 +14,7 @@ const FOUNDER_STAKE = 0.2;
 
 const SCALE_MARKS = [
   { at: 1000, label: "ten equal rivals", detail: "10 airlines × 10% each", side: "up" },
-  { at: 2500, label: "regulators worry", detail: "mergers above this get scrutiny", side: "down" },
+  { at: 2500, label: "regulators worry", detail: "merger-review territory", side: "down" },
   { at: 5000, label: "two equal rivals", detail: "2 airlines × 50% each", side: "up" },
   { at: 10000, label: "monopoly", detail: "one airline, all passengers", side: "down" },
 ] as const;

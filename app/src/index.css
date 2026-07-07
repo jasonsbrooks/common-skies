@@ -758,10 +758,11 @@ button {
 
 .scale-strip {
   position: relative;
-  height: 158px;
+  height: 172px;
   max-width: 720px;
   font-family: var(--font-ui);
   margin: 6px 0 4px;
+  overflow: visible;
 }
 
 .scale-track {
@@ -817,7 +818,7 @@ button {
 }
 
 .scale-mark.edge-r {
-  transform: translateX(-82%);
+  transform: translateX(-92%);
   text-align: right;
 }
 
@@ -863,7 +864,7 @@ button {
   border: 1px solid var(--hairline);
   background: var(--paper-raised);
   border-radius: 14px;
-  padding: 18px 22px 10px;
+  padding: 18px 22px 16px;
   margin: 22px 0 26px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
