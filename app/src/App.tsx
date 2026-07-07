@@ -55,13 +55,14 @@ function Page() {
   const seenOnce = useRef(false);
 
   useEffect(() => {
-    // Plain scroll math (not IntersectionObserver): the condensed bar may
-    // only appear once the full dials intro has scrolled above the viewport
-    // — never before the dials have been explained.
+    // Plain scroll math (not IntersectionObserver): the condensed bar
+    // appears the moment the actual toggle cards leave the viewport (past
+    // the sticky rail) — not when the whole intro card does, which left a
+    // dead zone where no controls were reachable.
     const check = () => {
-      const intro = document.getElementById("dials-intro");
-      if (!intro) return;
-      setPastDialsIntro(intro.getBoundingClientRect().bottom < 60);
+      const cards = document.getElementById("dial-cards");
+      if (!cards) return;
+      setPastDialsIntro(cards.getBoundingClientRect().bottom < 90);
     };
     check();
     window.addEventListener("scroll", check, { passive: true });

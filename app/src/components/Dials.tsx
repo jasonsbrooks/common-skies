@@ -116,7 +116,7 @@ export function DialsIntro() {
           and dollar figure below recalculates when you change them.
         </span>
       </div>
-      <div className="dial-cards">
+      <div className="dial-cards" id="dial-cards">
         <div className="dial-card">
           <div className="dial-num">Dial 1 · how the score is measured</div>
           <h3>Whose stock counts as influence?</h3>
