@@ -79,11 +79,13 @@ export function Methods() {
             </li>
             <li>
               <strong>Ownership is snapshotted,</strong> not continuous: four
-              registers (2016Q4 from AST's own Table 1; 2019/2022/2025 from
-              proxies and 13Gs), with boundaries snapped to events (Buffett's
-              exit, Spirit's creditor takeover). Cells we could not verify in
-              a primary filing are labeled approximate in data/curated/ —
-              mostly State Street stakes sitting under the 5% disclosure line.
+              registers (2016 from AST's own published table; 2019, 2022, and
+              2025 from SEC filings), with boundaries placed at the big
+              ownership events (Buffett's exit, Spirit's creditor takeover).
+              The handful of numbers we could not verify in an official
+              filing are labeled as approximate in the public data table —
+              mostly State Street stakes sitting just under the 5% line that
+              triggers mandatory disclosure.
             </li>
             <li>
               <strong>Roster sizes differ across snapshots</strong> (AST's
@@ -126,9 +128,10 @@ export function Methods() {
               2014–2026Q1.
             </li>
             <li>
-              Ownership: SEC DEF 14A &gt;5% tables and SC 13Gs via EDGAR; AST
-              (2018) Table 1 for 2016Q4; per-cell source strings in{" "}
-              <code>data/curated/ownership.csv</code>.
+              Ownership: official SEC filings (annual proxy statements'
+              "&gt;5% owners" tables and Schedule 13G disclosures), plus AST's
+              own published table for the 2016 snapshot. Every ownership
+              number carries a note saying exactly which filing it came from.
             </li>
             <li>
               Coefficients: AST (2018) Table 3 col. (6); DGS (2022) Table V
@@ -137,12 +140,19 @@ export function Methods() {
               4307814.
             </li>
             <li>
-              The pipeline (<code>pipeline/build_bundle.py</code>) is
-              deterministic — same inputs, byte-identical bundle — and its
-              coherence checks (the Buffett step, the Spirit channel split)
-              fail the build rather than the reader. The math core is
-              implemented twice (TypeScript for this page, Python for the
-              pipeline) and locked together by golden-vector tests.
+              Everything behind this site — the data-collection code, the
+              hand-checked ownership table, and the math — is public at{" "}
+              <a
+                href="https://github.com/jasonsbrooks/common-skies"
+                target="_blank"
+                rel="noreferrer"
+              >
+                github.com/jasonsbrooks/common-skies
+              </a>
+              , and anyone can re-run it from the raw government data. The
+              math is implemented twice, independently (once for this page,
+              once for the data build), and an automated test insists the
+              two agree to twelve decimal places before the site can deploy.
             </li>
           </ul>
         </Item>

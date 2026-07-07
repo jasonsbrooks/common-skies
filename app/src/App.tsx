@@ -121,11 +121,18 @@ function Page() {
       <Methods />
       <footer className="footer">
         <div className="wrap">
-          Fares: DOT Consumer Airfare Report (Table 6). Market shares: BTS
-          T-100. Ownership: SEC filings &amp; AST (2018) Table 1 — every number
-          cited in the fine print above. Predictions frozen in commit{" "}
-          <code>{prereg.commit.slice(0, 12)}</code> ({prereg.frozen}),{" "}
-          <code>{prereg.path}</code>.
+          Every number on this page comes from public government data (DOT
+          fares, BTS passenger counts) and official SEC ownership filings —
+          sources for each are in the fine print above. The predictions in ④
+          were publicly timestamped on {prereg.frozen}. All code and data:{" "}
+          <a
+            href="https://github.com/jasonsbrooks/common-skies"
+            target="_blank"
+            rel="noreferrer"
+          >
+            github.com/jasonsbrooks/common-skies
+          </a>
+          .
         </div>
       </footer>
     </>
